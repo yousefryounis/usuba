@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuba Sushi Bar - Menu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #f0f0f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 20px auto;
+        }
+
+        .header p {
+            font-size: 1em;
+            color: #d4af37;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .category-section {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-title {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #d4af37;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #f4d03f);
+        }
+
+        .subcategory {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: #d4af37;
+            margin: 40px 0 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px 40px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f5f5f5;
+            gap: 15px;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+        }
+
+        .item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .item-name {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .item-description {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .item-price {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #c41e3a;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .single-column {
+            grid-template-columns: 1fr;
+        }
+
+        @media (max-width: 1024px) {
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+                letter-spacing: 4px;
+            }
+
+            .category-section {
+                padding: 30px 20px;
+            }
+
+            .category-title {
+                font-size: 1.8em;
+            }
+
+            .subcategory {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>USUBA SUSHI BAR</h1>
+        <div class="divider"></div>
+        <p>Authentic Japanese Cuisine</p>
+    </div>
+
+    <div class="container">
+        <!-- SOUPS & STARTERS -->
+        <div class="category-section">
+            <h2 class="category-title">Soups & Starters</h2>
+
+            <div class="subcategory">Soups</div>
+            <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Shiro - White Miso</div>
+                        <div class="item-description">Wakame, tofu, shiitake mushrooms</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Aka - Red Miso</div>
+                        <div class="item-description">Wakame, mussels, green onions</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Udon Noodles Shrimp Spicy Soup</div>
+                        <div class="item-description">Shrimps, mussels, tomatoes, mushrooms</div>
+                    </div>
+                    <div class="item-price">$18</div>
+                </div>
+            </div>
+
+            <div class="subcategory">Hot Starters</div>
+            <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Edamame, Salted or Spicy</div>
+                    </div>
+                    <div class="item-price">$6 / $7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Harumaki, Vegetarian Spring Rolls</div>
+                        <div class="item-description">5 pieces</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Harumaki, Shrimps Spring Rolls</div>
+                        <div class="item-description">5 pieces</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Gyoza Chicken Dumplings</div>
+                        <div class="item-description">5 pieces</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Gyoza Shrimps' Dumplings</div>
+                        <div class="item-description">5 pieces</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Korean BBQ Beef Dumplings</div>
+                        <div class="item-description">5 pieces</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tempura Shrimps with Tartare Sauce</div>
+                        <div class="item-description">5 pieces</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Grilled Octopus</div>
+                        <div class="item-description">Yuzu tomato dressing</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Salmon Panko Bites with Tartare Sauce</div>
+                        <div class="item-description">5 pieces</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Shojin, Mix Vegetables Tempura</div>
+                        <div class="item-description">8 pieces</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Dynamite Shrimps</div>
+                        <div class="item-description">8 pieces</div>
+                    </div>
+                    <div class="item-price">$12</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Rock Shrimps</div>
+                    </div>
+                    <div class="item-price">$12</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Sweet Chilli Shrimps</div>
+                        <div class="item-description">8 pieces</div>
+                    </div>
+                    <div class="item-price">$12</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Crispy Calamari</div>
+                        <div class="item-description">8 pieces</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Miso Black Cod</div>
+                    </div>
+                    <div class="item-price">$18</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Prime Tenderloin Beef Tataki</div>
+                        <div class="item-description">With butter ponzu</div>
+                    </div>
+                    <div class="item-price">$15</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kara Age, Japanese Style Fried Chicken</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Grilled Oyster Mushrooms</div>
+                        <div class="item-description">With garlic lemon sauce</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Soft Shell Crab Tempura</div>
+                        <div class="item-description">Ponzu sauce</div>
+                    </div>
+                    <div class="item-price">$11</div>
+                </div>
+            </div>
+
+            <div class="subcategory">Cold Starters</div>
+            <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Crispy Rice</div>
+                        <div class="item-description">Spicy tuna or spicy salmon (2 pieces)</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tiradito Salmon</div>
+                        <div class="item-description">Spicy citrus sauce</div>
+                    </div>
+                    <div class="item-price">$15</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ceviche White Fish</div>
+                        <div class="item-description">Citrus sauce</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tataki Tuna</div>
+                        <div class="item-description">With tosazu sauce and ponzu</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tataki Salmon</div>
+                        <div class="item-description">With sudashi ponzu sauce</div>
+                    </div>
+                    <div class="item-price">$15</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Sweet Shrimp Carpaccio</div>
+                        <div class="item-description">Yuzu and olive oil</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Scallops Carpaccio</div>
+                        <div class="item-description">Yuzu soy dressing</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Smoked Salmon Carpaccio</div>
+                    </div>
+                    <div class="item-price">$14</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Salmon Carpaccio</div>
+                    </div>
+                    <div class="item-price">$15</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tuna Carpaccio</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Hamachi, Yellow Tail Carpaccio</div>
+                    </div>
+                    <div class="item-price">$17</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Japanese Tuna Tartar</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Truffle Yuzu Salmon Tartar</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Taco Wasabi</div>
+                        <div class="item-description">Raw octopus with wasabi</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">New Style Trio Sashimi</div>
+                        <div class="item-description">Yuzu soy shiso dressing</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Marinated Salmon</div>
+                        <div class="item-description">Yuzu miso dressing</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Japanese Oysters</div>
+                        <div class="item-description">Dashi vinegar and ponzu sauce</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Rice Paper Roll</div>
+                        <div class="item-description">Salmon, fresh crab, avocado</div>
+                    </div>
+                    <div class="item-price">$12</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Fresh Wasabi</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Russian Osetra Caviar</div>
+                        <div class="item-description">15g</div>
+                    </div>
+                    <div class="item-price">$35</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SALADS -->
+        <div class="category-section">
+            <h2 class="category-title">Salads</h2>
+            <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Wakame Seaweed Salad</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Green Salad</div>
+                        <div class="item-description">With ginger or sesame sauce</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Crab and Salmon with Miso Dressing</div>
+                    </div>
+                    <div class="item-price">$13</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Salmon with Miso or Sesame Dressing</div>
+                    </div>
+                    <div class="item-price">$13</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kani, Crab Salad with Miso Dressing</div>
+                    </div>
+                    <div class="item-price">$13</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Fresh Crab Salad</div>
+                        <div class="item-description">Yuzu, mustard, olive oil</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SASHIMI & NIGIRI -->
+        <div class="category-section">
+            <h2 class="category-title">Sashimi & Nigiri</h2>
+
+            <div class="subcategory">Sashimi (3 Pieces)</div>
+            <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Salmon</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tuna</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Hamachi, Yellow Tail</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ama Ebi, Sweet Shrimps</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kani, Crab</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Fresh Crab</div>
+                        <div class="item-description">1 piece</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ika, Japanese Calamari</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Saba, Japanese Mackerel</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Izumidai, Red Snapper</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ebi, Cooked Shrimps</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Smoked Salmon</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Unagi, Eel</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ikura, Salmon Roe</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Hokkigai, Surf Clam</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Hotate, Scallops</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Uni</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+            </div>
+
+            <div class="subcategory">Nigiri (2 Pieces)</div>
+            <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Salmon</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tuna</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tempura Shrimps</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Butter Fish</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ika</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Unagi, Eel</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Crab</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Aburi Salmon, Torched Salmon</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Izumidai</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Hamachi, Yellow Tail</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ebi, Cooked Shrimps</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tuna Foie Gras</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Wagyu</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- URAMAKI -->
+        <div class="category-section">
+            <h2 class="category-title">Uramaki (4 Pieces)</h2>
+            <div class="items-grid single-column">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Fukuoka</div>
+                        <div class="item-description">Smoked salmon, cream cheese, cucumber, sun dried tomatoes (Out:
+                            Sesame)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kyoto</div>
+                        <div class="item-description">Cream cheese, sun dried tomatoes (Out: Smoked salmon, black sesame
+                            seeds)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kunsei Shake</div>
+                        <div class="item-description">Cream cheese, cucumber, smoked salmon (Out: Mixed sesame seeds)
+                        </div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Katana</div>
+                        <div class="item-description">Shrimp tempura, cream cheese, cucumber (Out: Sesame seeds)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Okayama</div>
+                        <div class="item-description">Cream cheese, salmon, cucumber (Out: Mix sesame seeds)</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Shibuya</div>
+                        <div class="item-description">Spicy crab, cooked shrimp (Out: Avocado, rock shrimp, sesame seeds)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Hitachi</div>
+                        <div class="item-description">Crab surimi, salmon, avocado (Out: Tobiko)</div>
+                    </div>
+                    <div class="item-price">$5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kagoshima</div>
+                        <div class="item-description">Tuna, gochujang, cooked shrimps, cucumber (Out: Tuna)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Asano</div>
+                        <div class="item-description">Tuna, salmon, avocado (Out: Torched butterfish)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Smoked</div>
+                        <div class="item-description">Salmon, avocado (Out: Smoked salmon, black sesame seeds)</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Bonsai</div>
+                        <div class="item-description">Salmon, lettuce (Out: Spicy crab, tuna, tobiko)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Pontocho</div>
+                        <div class="item-description">Spicy tuna, tempura salmon (Out: Eel, avocado, teriyaki sauce)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ginza</div>
+                        <div class="item-description">Salmon, avocado (Out: Mango)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Hakone</div>
+                        <div class="item-description">Salmon shin, shrimp tempura, avocado (Out:
+                            Mango, teriyaki sauce)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Matsumoto</div>
+                        <div class="item-description">Spicy salmon (Out: Panko, shichimi-togarashi)
+                        </div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Chiba Deluxe</div>
+                        <div class="item-description">Spicy crab (Out: Sweet chili, spicy salmon)
+                        </div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Nagano</div>
+                        <div class="item-description">Chicken katsu, cucumber (Out: Avocado,
+                            teriyaki sauce)</div>
+                    </div>
+                    <div class="item-price">$5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tsukiji</div>
+                        <div class="item-description">Salmon, crab, cooked shrimps (Out: Ginger
+                            shrimp)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Taiko</div>
+                        <div class="item-description">Salmon, tuna, cooked shrimp (Out: Ginger
+                            shrimp)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Samurai</div>
+                        <div class="item-description">Shrimp tempura, cucumber, tuna (Out: Avocado,
+                            teriyaki sauce)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ebi Tempura</div>
+                        <div class="item-description">Shrimp tempura, cucumber, avocado (Out:
+                            Tobiko, teriyaki sauce)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Miyagi</div>
+                        <div class="item-description">Spicy kimchi salmon, avocado, oshinko (Out:
+                            Sweet chili shrimps)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Maiko</div>
+                        <div class="item-description">Sweet chili salmon, avocado (Out: Tobiko)
+                        </div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Sapporo</div>
+                        <div class="item-description">Shrimp tempura, avocado (Out: Torched salmon,
+                            teriyaki sauce)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Fushimi</div>
+                        <div class="item-description">Spicy tuna (Out: Salmon, tuna, avocado)</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Okinawa</div>
+                        <div class="item-description">Crab, avocado, cucumber (Out: Mango, black
+                            sesame seeds)</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Nagoya</div>
+                        <div class="item-description">Crab, salmon, avocado (Out: Furikake, Japanese
+                            mayo)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kobe</div>
+                        <div class="item-description">Avocado, cucumber, crab (Out: Beef, ginger
+                            sauce, mushrooms, sesame seeds)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Robata</div>
+                        <div class="item-description">Eel, cucumber (Out: Avocado, salmon, teriyaki
+                            sauce)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Fuji</div>
+                        <div class="item-description">Salmon, avocado, tobiko (Out: Salmon, Japanese
+                            mayo, torched parmesan cheese)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ebi Maki</div>
+                        <div class="item-description">Shrimp tempura, avocado, cucumber (Out:
+                            Torched salmon, teriyaki sauce, sesame seeds)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Hiroshima</div>
+                        <div class="item-description">Salmon, crab, cucumber (Out: Ika, tobiko)
+                        </div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Nagasaki</div>
+                        <div class="item-description">Crab, avocado, cucumber (Out: Tobiko, salmon
+                            with miso dressing)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Chiba</div>
+                        <div class="item-description">Spicy crab (Out: Panko, shichimi-togarashi)
+                        </div>
+                    </div>
+                    <div class="item-price">$5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Geisha</div>
+                        <div class="item-description">Shrimp katsu, cucumber, avocado (Out: Tuna)
+                        </div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kanazawa</div>
+                        <div class="item-description">Tempura salmon, cucumber (Out: Torched salmon,
+                            teriyaki sauce)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Masu</div>
+                        <div class="item-description">Spicy kimchi salmon, cooked shrimp (Out:
+                            Avocado, sesame seeds)</div>
+                    </div>
+                    <div class="item-price">$5.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Yokohama</div>
+                        <div class="item-description">Fresh crab, cucumber (Out: Eel, teriyaki
+                            sauce)</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Miyamoto</div>
+                        <div class="item-description">Fresh crab, avocado (Out: Scallops with
+                            truffle oil)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kani</div>
+                        <div class="item-description">Fresh crab, avocado (Out: Tobiko)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Iwaki</div>
+                        <div class="item-description">Fresh crab, avocado, cucumber (Out: Tuna with
+                            truffle mayo)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Wagyu</div>
+                        <div class="item-description">Prime beef, asparagus (Out: Seared wagyu beef,
+                            yakiniku sauce)</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kurume</div>
+                        <div class="item-description">Panko salmon (Out: Avocado, curry mayo)</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tokyo</div>
+                        <div class="item-description">Shrimp katsu, mango (Out: Tuna, sesame seeds,
+                            teriyaki sauce)</div>
+                    </div>
+                    <div class="item-price">$6.5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Panko</div>
+                        <div class="item-description">Salmon, crab, avocado</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Panko Deluxe</div>
+                        <div class="item-description">Salmon, crab, avocado, topped with crab</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Dragon Eye</div>
+                        <div class="item-description">Salmon, tuna, white fish, green onions,
+                            teriyaki sauce</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kawazaki</div>
+                        <div class="item-description">Spicy tuna, cucumber, cooked shrimps, crab,
+                            tobiko</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kyushu</div>
+                        <div class="item-description">Spicy salmon, cream cheese, crab, avocado,
+                            tobiko</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                                </div>
+                            </div>
+
+                            <!-- OTHER ROLLS -->
+                            <div class="category-section">
+                                <h2 class="category-title">Other Rolls & Sushi</h2>
+
+                                <div class="subcategory">Futomaki (6 Pieces)</div>
+                                <div class="items-grid single-column">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kamikaze Salmon</div>
+                        <div class="item-description">Spicy salmon, tempura flakes, avocado,
+                            cucumber</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kamikaze Tuna</div>
+                        <div class="item-description">Spicy tuna, tempura flakes, avocado, cucumber
+                        </div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kamikaze Hamachi</div>
+                        <div class="item-description">Spicy hamachi, tempura flakes, avocado,
+                            cucumber</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Kumo</div>
+                        <div class="item-description">Soft shell crab, cucumber, lettuce, avocado,
+                            teriyaki sauce</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Hokkaido</div>
+                        <div class="item-description">Shrimp tempura, sweet potatoes, avocado, spicy
+                            mayo</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Umeda</div>
+                        <div class="item-description">Rice outside-sesame seeds, panko, crab surimi,
+                            lettuce, avocado, cucumber</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ninja</div>
+                        <div class="item-description">Eel, salmon, avocado, cucumber, teriyaki sauce
+                        </div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Osaka</div>
+                        <div class="item-description">Salmon tempura, green onions, avocado,
+                            cucumber, sesame seeds, teriyaki sauce</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Onsen</div>
+                        <div class="item-description">White fish tempura, green onions, crab, spicy
+                            tuna, avocado</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Koshi</div>
+                        <div class="item-description">Scallop katsu, crab, tobiko, cucumber, avocado
+                        </div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tottori</div>
+                        <div class="item-description">Spicy tuna, shrimp katsu, avocado</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Harakiri</div>
+                        <div class="item-description">Cooked shrimps, tuna, cucumber, sweet chili
+                            sauce</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Wafu</div>
+                        <div class="item-description">Cooked shrimps, crab, cucumber, lettuce,
+                            sesame, sweet chili sauce</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Yokohama</div>
+                        <div class="item-description">Eel, shrimp tempura, cucumber, oshinko,
+                            teriyaki sauce</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Aomori</div>
+                        <div class="item-description">Spicy salmon, cream cheese, avocado, crab
+                        </div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                                </div>
+
+                                <div class="subcategory">Hosomaki (6 Pieces)</div>
+                                <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Cucumber</div>
+                    </div>
+                    <div class="item-price">$5</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Avocado</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Crab</div>
+                    </div>
+                    <div class="item-price">$6</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Salmon or Spicy Salmon</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tuna or Spicy Tuna</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Eel</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Hamachi or Spicy Hamachi</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                                </div>
+
+                                <div class="subcategory">Soya Paper Rolls</div>
+                                <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Shirakawa</div>
+                        <div class="item-description">Spicy tuna, panko, avocado, cooked shrimps
+                        </div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ibaraki</div>
+                        <div class="item-description">Shrimp katsu, tobiko, raw scallops, mango
+                        </div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Niigata</div>
+                        <div class="item-description">Eel, shrimp tempura, cucumber, oshinko</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Nara</div>
+                        <div class="item-description">Shrimp katsu, tuna, spicy crab, cucumber</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Akita</div>
+                        <div class="item-description">Spicy salmon, cream cheese, avocado, crab,
+                            cooked shrimps</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                                </div>
+
+                                <div class="subcategory">Fried Tempura (6 Pieces)</div>
+                                <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Zazen</div>
+                        <div class="item-description">Salmon, tuna coated, tobiko (No rice)</div>
+                    </div>
+                    <div class="item-price">$10</div>
+                </div>
+                                </div>
+
+                                <div class="subcategory">Temaki (Hand Roll)</div>
+                                <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Salmon or Spicy Salmon</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tuna or Spicy Tuna</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Shrimp Tempura</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Unagi - Eel</div>
+                    </div>
+                    <div class="item-price">$9</div>
+                </div>
+                                </div>
+
+                                <div class="subcategory">Gunkan (Battleship Sushi)</div>
+                                <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Salmon or Spicy Salmon</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tuna or Spicy Tuna</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Spicy Scallops</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Spicy Shrimps</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tobiko</div>
+                    </div>
+                    <div class="item-price">$7</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Fresh Crab</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Ikura</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Uni</div>
+                    </div>
+                    <div class="item-price">$8</div>
+                </div>
+                                </div>
+                            </div>
+
+                            <!-- MAINS & BOWLS -->
+                            <div class="category-section">
+                                <h2 class="category-title">Mains & Bowls</h2>
+
+                                <div class="subcategory">On the Grill</div>
+                                <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Grilled Salmon with Teriyaki Sauce</div>
+                    </div>
+                    <div class="item-price">$19</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Grilled Seabass</div>
+                        <div class="item-description">With Japanese seven spices sauce</div>
+                    </div>
+                    <div class="item-price">$21</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Prime Beef Tenderloin</div>
+                        <div class="item-description">With ginger sauce</div>
+                    </div>
+                    <div class="item-price">$21</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Dry Aged 27 Days Ribeye</div>
+                    </div>
+                    <div class="item-price">$26</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Dry Aged 27 Days Sirloin</div>
+                    </div>
+                    <div class="item-price">$24</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Japanese Wagyu A5 Miyazaki</div>
+                        <div class="item-description">Per gram (100g)</div>
+                    </div>
+                    <div class="item-price">$45</div>
+                </div>
+                                </div>
+
+                                <div class="subcategory">Wok Specialties</div>
+                                <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Otaya, Japanese Style Sweet and Sour</div>
+                        <div class="item-description">Chicken / Shrimps</div>
+                    </div>
+                    <div class="item-price">$17 / $19</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Karai, Japanese Style Spicy</div>
+                        <div class="item-description">Chicken / Shrimps</div>
+                    </div>
+                    <div class="item-price">$17 / $19</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Sesame Chicken</div>
+                    </div>
+                    <div class="item-price">$18</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Broccoli Beef</div>
+                        <div class="item-description">With ginger sauce</div>
+                    </div>
+                    <div class="item-price">$19</div>
+                </div>
+                                </div>
+
+                                <div class="subcategory">Yakisoba (Japanese Noodles)</div>
+                                <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Vegetarian</div>
+                    </div>
+                    <div class="item-price">$14</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Chicken</div>
+                    </div>
+                    <div class="item-price">$17</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Beef</div>
+                    </div>
+                    <div class="item-price">$19</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Shrimp</div>
+                    </div>
+                    <div class="item-price">$19</div>
+                </div>
+                                </div>
+
+                                <div class="subcategory">Donburi (Rice Bowls)</div>
+                                <div class="items-grid">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Salmon</div>
+                    </div>
+                    <div class="item-price">$20</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Unagi</div>
+                    </div>
+                    <div class="item-price">$25</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">Tempura Shrimps</div>
+                    </div>
+                    <div class="item-price">$18</div>
+                </div>
+                </div>
+            </div>
+
+            <!-- OBENTOS -->
+            <div class="category-section">
+                <h2 class="category-title">Obentos (Set Boxes)</h2>
+                <div class="items-grid single-column">
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">O-Bento 1</div>
+                        <div class="item-description">30 pcs mixed box: Salmon, tuna, crab, shrimps, white fish</div>
+                    </div>
+                    <div class="item-price">$36</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">O-Bento 2</div>
+                        <div class="item-description">60 pcs mixed box: Salmon, tuna, crab, shrimps, white fish</div>
+                    </div>
+                    <div class="item-price">$72</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">O-Bento 3</div>
+                        <div class="item-description">16 pcs mixed box: Salmon, crab, shrimps</div>
+                    </div>
+                    <div class="item-price">$22</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">O-Bento 4</div>
+                        <div class="item-description">18 pcs box: Set of salmon</div>
+                    </div>
+                    <div class="item-price">$24</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">O-Bento 5</div>
+                        <div class="item-description">18 pcs mixed crab box</div>
+                    </div>
+                    <div class="item-price">$21</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">O-Bento 6</div>
+                        <div class="item-description">12 pcs mixed box: Salmon, crab, shrimps</div>
+                    </div>
+                    <div class="item-price">$16</div>
+                </div>
+                <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                        <div class="item-name">O-Bento 7</div>
+                        <div class="item-description">24 pcs mixed box: Salmon, crab, shrimps</div>
+                    </div>
+                    <div class="item-price">$30</div>
+                </div>
+                </div>
+            </div>
+
+            <!-- DESSERTS -->
+            <div class="category-section">
+                <h2 class="category-title">Desserts</h2>
+                <div class="items-grid single-column">
+                    <div class="menu-item"><img src="https://placehold.co/70x70/f5f5f5/999?text=" alt="Menu item" class="item-image"><div class="item-info">
+                            <div class="item-name">Japanese Mochi</div>
+                            <div class="item-description">Tiramisu, Yuzu, Coconut, Matcha, Lotus, Brownie, Caramel, Mango, Strawberry, Raspberry, Cheese Cake, Tropical, Chocolate Strawberry, Chocolate Raspberry</div>
+                        </div>
+                        <div class="item-price">$6</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
