@@ -177,6 +177,27 @@
             padding-left: 35px;
         }
 
+        .side-menu-divider {
+            height: 1px;
+            background: rgba(212, 175, 55, 0.3);
+            margin: 15px 25px;
+        }
+
+        .side-menu-link.drink-menu {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border-left: 3px solid #d4af37;
+            margin: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            padding: 15px 20px;
+        }
+
+        .side-menu-link.drink-menu:hover {
+            background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
+            color: #1a1a1a;
+            padding-left: 20px;
+        }
+
         /* Overlay */
         .menu-overlay {
             position: fixed;
@@ -496,6 +517,8 @@
             <div class="side-menu-title">Menu</div>
         </div>
         <nav class="side-menu-nav">
+            <a href="drink-menu.html" class="side-menu-link drink-menu">🍸 Drink Menu</a>
+            <div class="side-menu-divider"></div>
             <a href="#soups-starters" class="side-menu-link">Soups & Starters</a>
             <a href="#salads" class="side-menu-link">Salads</a>
             <a href="#mains-bowls" class="side-menu-link">Mains & Bowls</a>
