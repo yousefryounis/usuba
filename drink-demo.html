@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuba Sushi Bar - Sample Drink Menu</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: #000000;
+            color: #f0f0f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #000000;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 20px auto;
+        }
+
+        .header p {
+            font-size: 1em;
+            color: #d4af37;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        .demo-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
+            color: #000;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .intro-text {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .intro-text h2 {
+            color: #d4af37;
+            font-size: 1.5em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .intro-text p {
+            color: #ccc;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        .category-section {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-title {
+            font-size: 2.2em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #d4af37;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #f4d03f);
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 40px;
+        }
+
+        /* Drink Items */
+        .drink-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .drink-item:last-child {
+            border-bottom: none;
+        }
+
+        .drink-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .drink-name {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .drink-price {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #d4af37;
+        }
+
+        .drink-description {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .drink-details {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .full-menu-cta {
+            text-align: center;
+            padding: 50px 30px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-radius: 20px;
+            margin-top: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .full-menu-cta h3 {
+            color: #d4af37;
+            font-size: 1.8em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .full-menu-cta p {
+            color: #ccc;
+            margin-bottom: 25px;
+            font-size: 1em;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.primary {
+            background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
+            color: #000;
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: #d4af37;
+            border: 2px solid #d4af37;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer .highlight {
+            color: #d4af37;
+        }
+
+        /* Menu Toggle Button */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            width: 55px;
+            height: 55px;
+            background: rgba(26, 26, 26, 0.95);
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .menu-toggle:hover {
+            background: #d4af37;
+            transform: scale(1.1);
+        }
+
+        .menu-toggle .sushi-icon {
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle .close-icon {
+            display: none;
+            color: #d4af37;
+            font-size: 24px;
+            font-weight: 300;
+        }
+
+        .menu-toggle:hover .close-icon {
+            color: #1a1a1a;
+        }
+
+        .menu-toggle.active .sushi-icon {
+            display: none;
+        }
+
+        .menu-toggle.active .close-icon {
+            display: block;
+        }
+
+        /* Side Menu */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100vh;
+            background: rgba(26, 26, 26, 0.98);
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .side-menu.open {
+            right: 0;
+        }
+
+        .side-menu-header {
+            padding: 30px 25px 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+        }
+
+        .side-menu-title {
+            color: #d4af37;
+            font-size: 1.1em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .side-menu-nav {
+            padding: 20px 0;
+        }
+
+        .side-menu-link {
+            display: block;
+            color: #f0f0f0;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 0.95em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .side-menu-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            border-left-color: #d4af37;
+            padding-left: 35px;
+        }
+
+        .side-menu-divider {
+            height: 1px;
+            background: rgba(212, 175, 55, 0.3);
+            margin: 15px 25px;
+        }
+
+        .side-menu-link.highlight-link {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border-left: 3px solid #d4af37;
+            margin: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            padding: 15px 20px;
+        }
+
+        .side-menu-link.highlight-link:hover {
+            background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
+            color: #1a1a1a;
+            padding-left: 20px;
+        }
+
+        /* Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Go to Top Button */
+        .go-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            z-index: 1000;
+        }
+
+        .go-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .go-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px;
+            }
+
+            .logo {
+                width: 140px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+                letter-spacing: 4px;
+            }
+
+            .category-section {
+                padding: 30px 20px;
+            }
+
+            .category-title {
+                font-size: 1.5em;
+            }
+
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="images/logo.png" alt="Usuba Sushi Bar Logo" class="logo">
+        <h1>USUBA SUSHI BAR</h1>
+        <div class="divider"></div>
+        <p>Drink Menu</p>
+    </div>
+
+    <!-- Menu Toggle Button -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span class="sushi-icon">🍶</span>
+        <span class="close-icon">✕</span>
+    </button>
+
+    <!-- Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Side Menu -->
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <div class="side-menu-title">Drinks</div>
+        </div>
+        <nav class="side-menu-nav">
+            <a href="demo.html" class="side-menu-link highlight-link">🍣 Food Menu</a>
+            <div class="side-menu-divider"></div>
+            <a href="#sake" class="side-menu-link">Premium Sake</a>
+            <a href="#whisky" class="side-menu-link">Japanese Whisky</a>
+            <a href="#cocktails" class="side-menu-link">Signature Cocktails</a>
+            <a href="#beer" class="side-menu-link">Beer & Non-Alcoholic</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- SAKE -->
+        <div class="category-section" id="sake">
+            <h2 class="category-title">Premium Sake</h2>
+            <div class="items-grid">
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Sake by Glass</span>
+                        <span class="drink-price">$6</span>
+                    </div>
+                    <div class="drink-description">House selection, warm or cold</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Warm/Cold Sake Tokkuri</span>
+                        <span class="drink-price">$15</span>
+                    </div>
+                    <div class="drink-description">Traditional carafe service</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Akita Homare Junmai</span>
+                        <span class="drink-price">$40</span>
+                    </div>
+                    <div class="drink-description">Umami delightful sake - dry herbs taste</div>
+                    <div class="drink-details">720 ML, Alc 15%, Polish 45%</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Dassai 45</span>
+                        <span class="drink-price">$60</span>
+                    </div>
+                    <div class="drink-description">Aromas, hint of anise, mild veggie aftertaste</div>
+                    <div class="drink-details">720 ML, Alc 16%, Polish 45%</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Dassai 39</span>
+                        <span class="drink-price">$75</span>
+                    </div>
+                    <div class="drink-description">Top class, sweet like honey with lasting aftertaste</div>
+                    <div class="drink-details">720 ML, Alc 17%, Polish 39%</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Hakkaisan Champagne</span>
+                        <span class="drink-price">$120</span>
+                    </div>
+                    <div class="drink-description">Sparkling sake, celebratory elegance</div>
+                    <div class="drink-details">720 ML, Alc 13%, Polish 50%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JAPANESE WHISKY -->
+        <div class="category-section" id="whisky">
+            <h2 class="category-title">Japanese Whisky</h2>
+            <div class="items-grid">
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Suntory Toki</span>
+                        <span class="drink-price">$12</span>
+                    </div>
+                    <div class="drink-description">Smooth blended whisky, perfect for highballs</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Nikka Coffey Grain</span>
+                        <span class="drink-price">$18</span>
+                    </div>
+                    <div class="drink-description">Sweet, mellow with vanilla notes</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Yamazaki 12 Year</span>
+                        <span class="drink-price">$28</span>
+                    </div>
+                    <div class="drink-description">Fruity and delicate with light oak</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Hibiki Harmony</span>
+                        <span class="drink-price">$22</span>
+                    </div>
+                    <div class="drink-description">Delicate, well-balanced blend</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIGNATURE COCKTAILS -->
+        <div class="category-section" id="cocktails">
+            <h2 class="category-title">Signature Cocktails</h2>
+            <div class="items-grid">
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Yuzu Sake Spritz</span>
+                        <span class="drink-price">$14</span>
+                    </div>
+                    <div class="drink-description">Sake, yuzu, elderflower, sparkling soda</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Tokyo Mule</span>
+                        <span class="drink-price">$15</span>
+                    </div>
+                    <div class="drink-description">Japanese vodka, ginger, lime, shiso</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Sakura Martini</span>
+                        <span class="drink-price">$16</span>
+                    </div>
+                    <div class="drink-description">Japanese gin, cherry blossom, lychee</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Matcha Highball</span>
+                        <span class="drink-price">$14</span>
+                    </div>
+                    <div class="drink-description">Whisky, ceremonial matcha, tonic</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BEER & NON-ALCOHOLIC -->
+        <div class="category-section" id="beer">
+            <h2 class="category-title">Beer & Non-Alcoholic</h2>
+            <div class="items-grid">
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Asahi Super Dry</span>
+                        <span class="drink-price">$7</span>
+                    </div>
+                    <div class="drink-description">Crisp, clean Japanese lager</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Sapporo Premium</span>
+                        <span class="drink-price">$7</span>
+                    </div>
+                    <div class="drink-description">Smooth, refreshing pilsner</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Green Tea</span>
+                        <span class="drink-price">$4</span>
+                    </div>
+                    <div class="drink-description">Traditional Japanese sencha</div>
+                </div>
+                <div class="drink-item">
+                    <div class="drink-header">
+                        <span class="drink-name">Ramune Soda</span>
+                        <span class="drink-price">$5</span>
+                    </div>
+                    <div class="drink-description">Classic Japanese marble soda</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🍶 <span class="highlight">Usuba Sushi Bar</span> 🍶</p>
+    </div>
+
+    <button class="go-to-top" id="goToTop" aria-label="Go to top">
+        ↑
+    </button>
+
+    <script>
+        // Side Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sideMenu = document.getElementById('sideMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const sideMenuLinks = document.querySelectorAll('.side-menu-link');
+
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            sideMenu.classList.toggle('open');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = sideMenu.classList.contains('open') ? 'hidden' : '';
+        }
+
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            sideMenu.classList.remove('open');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        sideMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        // Go to Top Button
+        const goToTopBtn = document.getElementById('goToTop');
+        
+        goToTopBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            history.pushState('', document.title, window.location.pathname);
+        });
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                goToTopBtn.classList.add('visible');
+            } else {
+                goToTopBtn.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+
+</html>
