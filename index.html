@@ -551,7 +551,9 @@
         }
 
         .dessert-item {
-            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
             padding: 30px;
         }
 
@@ -634,8 +636,9 @@
         .dessert-title {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
+            flex: 1;
             font-size: 1.5em;
             font-weight: 300;
             letter-spacing: 3px;
@@ -651,14 +654,17 @@
             font-size: 1.2em;
             color: #c41e3a;
             font-weight: 500;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            text-align: right;
         }
 
         .dessert-subtitle {
+            width: 100%;
             font-size: 0.95em;
             color: #666;
             margin-bottom: 15px;
             font-style: italic;
+            text-align: center;
         }
 
         /* Footer Styles */
@@ -2099,7 +2105,7 @@
             <h2 class="category-title">Desserts</h2>
             <div class="dessert-item">
                 <div class="dessert-title"><img loading="lazy" src="images/misc/japanese-mochi.webp" alt="Japanese Mochi" class="section-image-wide"> <span>Japanese Mochi</span></div>
-                <div class="dessert-price">6 each</div>
+                <div class="dessert-price">6</div>
                 <div class="dessert-subtitle">Choose your flavor</div>
                 <div class="mochi-flavors">
                     <span class="mochi-flavor">Tiramisu</span>
