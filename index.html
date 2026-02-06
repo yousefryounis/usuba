@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuba Sushi Bar - Menu</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="icon" type="image/jpeg" href="images/logo2.jpg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
@@ -21,24 +21,43 @@
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background: #000000;
+            background: #111312;
             color: #f0f0f0;
             line-height: 1.6;
             min-height: 100vh;
         }
 
         .header {
-            background: #000000;
+            background: #111312;
             color: #fff;
             text-align: center;
-            padding: 30px 15px;
+            padding: 15px 15px;
         }
 
         .logo {
-            width: 120px;
+            width: 180px;
             height: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            margin-bottom: 5px;
+        }
+
+        .header .tagline {
+            font-size: 1.3em;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .tagline .dot {
+            color: #c41e3a;
+        }
+
+        .header .subtitle {
+            font-size: 0.75em;
+            color: #fff;
+            letter-spacing: 2px;
+            font-weight: 300;
+            margin-top: 10px;
         }
 
         .header h1 {
@@ -47,10 +66,7 @@
             letter-spacing: 5px;
             margin-bottom: 8px;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #ffffff 0%, #c41e3a 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
         }
 
         .divider {
@@ -673,7 +689,7 @@
         }
 
         .footer-content {
-            background: #000000;
+            background: #111312;
             padding: 20px 20px 30px;
             text-align: center;
         }
@@ -845,10 +861,11 @@
 
 <body>
     <div class="header">
-        <img src="images/logo.png" alt="Usuba Sushi Bar Logo" class="logo">
+        <p class="tagline">TASTY <span class="dot">.</span> SUSHI <span class="dot">.</span> FRESH</p>
+        <img src="images/logo2.jpg" alt="Usuba Sushi Bar Logo" class="logo">
         <h1>USUBA SUSHI BAR</h1>
         <div class="divider"></div>
-        <p>Authentic Japanese Cuisine</p>
+        <p class="subtitle">A UNIQUE APPROACH TO JAPANESE CUISINE</p>
     </div>
 
     <!-- Menu Toggle Button -->
@@ -967,7 +984,7 @@
                     </div>
                     <div class="item-price">15</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tuna-capraccio.webp" alt="Tuna Carpaccio" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tuna-capraccio.jpg" alt="Tuna Carpaccio" class="item-image"><div class="item-info">
                         <div class="item-name">Tuna Carpaccio</div>
                     </div>
                     <div class="item-price">16</div>
@@ -1038,7 +1055,7 @@
                     <div class="item-price">6 / 7</div>
                 </div>
                 <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/harumaki.webp" alt="Menu item" class="item-image"><div class="item-info">
-                        <div class="item-name">Harumaki Spring Rolls</div>
+                        <div class="item-name">Harumaki- Spring Rolls</div>
                         <div class="item-description">5 pieces</div>
                         <div class="wok-item-options">
                             <span class="wok-item-option">Vegetarian 6</span>
@@ -1047,7 +1064,7 @@
                     </div>
                 </div>
                 <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/gyoza.webp" alt="Menu item" class="item-image"><div class="item-info">
-                        <div class="item-name">Gyoza Dumplings</div>
+                        <div class="item-name">Gyoza - Japanese Dumplings</div>
                         <div class="item-description">5 pieces</div>
                         <div class="wok-item-options">
                             <span class="wok-item-option">Chicken 6</span>
@@ -1059,7 +1076,7 @@
                         <div class="item-name">Korean BBQ Beef Dumplings</div>
                         <div class="item-description">5 pieces</div>
                     </div>
-                    <div class="item-price">10</div>
+                    <div class="item-price">11</div>
                 </div>
                 <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/tempura-shrimps.webp" alt="Menu item" class="item-image"><div class="item-info">
                         <div class="item-name">Tempura Shrimps with Tartare Sauce</div>
@@ -1102,9 +1119,9 @@
                     </div>
                     <div class="item-price">12</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/crispy-calamari.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/crispy-calamari.jpg" alt="Menu item" class="item-image"><div class="item-info">
                         <div class="item-name">Crispy Calamari</div>
-                        <div class="item-description">8 pieces</div>
+                        <div class="item-description">5 pieces</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
@@ -2102,7 +2119,7 @@
         <div class="category-section" id="desserts">
             <h2 class="category-title">Desserts</h2>
             <div class="dessert-item">
-                <div class="dessert-title"><img loading="lazy" src="images/misc/japanese-mochi.webp" alt="Japanese Mochi" class="section-image-wide"> <span>Japanese Mochi <span style="color: #c41e3a;">(6)</span></span></div>
+                <div class="dessert-title"><img loading="lazy" src="images/misc/japanese-mochi.webp" alt="Japanese Mochi" class="section-image-wide"> <span>Japanese Mochi <span style="color: #c41e3a;">M/6 , L/7</span></span></div>
                 <div class="dessert-subtitle">Choose your flavor</div>
                 <div class="mochi-flavors">
                     <span class="mochi-flavor">Tiramisu</span>

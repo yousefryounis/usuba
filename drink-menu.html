@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuba Sushi Bar - Drink Menu</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="icon" type="image/jpeg" href="images/logo2.jpg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
         * {
@@ -16,20 +16,40 @@
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background: #000000;
+            background: #111312;
             min-height: 100vh;
             color: #1a1a1a;
         }
 
         .header {
             text-align: center;
-            padding: 30px 15px;
-            background: #000000;
+            padding: 15px 15px;
+            background: #111312;
         }
 
         .logo {
-            width: 120px;
-            margin-bottom: 10px;
+            width: 180px;
+            margin-bottom: 5px;
+        }
+
+        .header .tagline {
+            font-size: 1.3em;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .tagline .dot {
+            color: #c41e3a;
+        }
+
+        .header .subtitle {
+            font-size: 0.75em;
+            color: #fff;
+            letter-spacing: 2px;
+            font-weight: 300;
+            margin-top: 10px;
         }
 
         .header h1 {
@@ -38,10 +58,7 @@
             letter-spacing: 5px;
             margin-bottom: 8px;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #ffffff 0%, #c41e3a 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
         }
 
         .divider {
@@ -66,7 +83,7 @@
             z-index: 1001;
             width: 55px;
             height: 55px;
-            background: #000000;
+            background: #111312;
             border: 2px solid #c41e3a;
             border-radius: 50%;
             cursor: pointer;
@@ -116,7 +133,7 @@
             width: 280px;
             height: 100vh;
             max-height: 100vh;
-            background: #000000;
+            background: #111312;
             z-index: 1000;
             transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
@@ -492,7 +509,7 @@
         }
 
         .footer-content {
-            background: #000000;
+            background: #111312;
             padding: 15px 20px 25px;
             text-align: center;
         }
@@ -664,10 +681,11 @@
 
 <body>
     <div class="header">
-        <img src="images/logo.png" alt="Usuba Sushi Bar Logo" class="logo">
+        <p class="tagline">TASTY <span class="dot">.</span> SUSHI <span class="dot">.</span> FRESH</p>
+        <img src="images/logo2.jpg" alt="Usuba Sushi Bar Logo" class="logo">
         <h1>USUBA SUSHI BAR</h1>
         <div class="divider"></div>
-        <p>Drink Menu</p>
+        <p class="subtitle">A UNIQUE APPROACH TO JAPANESE CUISINE</p>
     </div>
 
     <!-- Menu Toggle Button -->
