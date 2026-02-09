@@ -536,9 +536,11 @@
 
         .mochi-flavors {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             margin-top: 15px;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         @media (max-width: 768px) {
@@ -551,8 +553,8 @@
             background: #fff;
             border: 1px solid #c41e3a;
             border-radius: 12px;
-            padding: 10px 14px;
-            font-size: 0.9em;
+            padding: 8px 10px;
+            font-size: 0.85em;
             color: #1a1a1a;
             font-weight: 400;
             letter-spacing: 0.5px;
@@ -560,7 +562,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 8px;
+            gap: 6px;
+            min-width: 0;
+            overflow: hidden;
         }
 
         .mochi-flavor:hover {
@@ -570,7 +574,11 @@
 
         .mochi-flavor-name {
             flex: 1;
+            min-width: 0;
             text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .mochi-size-btns {
