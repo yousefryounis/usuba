@@ -25,12 +25,14 @@
     }
 
     // ── Cart operations ────────────────────────────────────
-    function addItem(name, price) {
-        const existing = cart.find(i => i.name === name && i.price === price);
+    function addItem(name, price, image, price2) {
+        const existing = cart.find(i => i.name === name && i.price === price && (i.price2 || null) === (price2 || null));
         if (existing) {
             existing.qty += 1;
         } else {
-            cart.push({ name, price: parseFloat(price), qty: 1 });
+            const entry = { name, price: parseFloat(price), qty: 1, image: image || '' };
+            if (price2) entry.price2 = parseFloat(price2);
+            cart.push(entry);
         }
         saveCart();
         renderCart();
@@ -59,6 +61,10 @@
         saveCart();
         renderCart();
         renderBadge();
+        // Remove highlight from all menu/drink items
+        document.querySelectorAll('.cart-item-added').forEach(el => {
+            el.classList.remove('cart-item-added');
+        });
     }
 
     function totalItems() {
@@ -67,6 +73,15 @@
 
     function totalPrice() {
         return cart.reduce((s, i) => s + i.price * i.qty, 0);
+    }
+
+    function totalPrice2() {
+        // Sum using price2 where available, else price
+        return cart.reduce((s, i) => s + (i.price2 || i.price) * i.qty, 0);
+    }
+
+    function hasAnyPrice2() {
+        return cart.some(i => i.price2);
     }
 
     // ── Inject HTML structure ──────────────────────────────
@@ -156,9 +171,11 @@
                 const section = getSectionName(item);
                 const rawName = nameEl.textContent.trim();
                 const name = section ? section + ' - ' + rawName : rawName;
-                const price = parsePrice(priceEl.textContent.trim());
-                if (price > 0) {
-                    addItem(name, price);
+                const parsed = parsePriceText(priceEl.textContent.trim());
+                const imgEl = item.querySelector('.item-image');
+                const image = imgEl ? imgEl.src : '';
+                if (parsed.price > 0) {
+                    addItem(name, parsed.price, image, parsed.price2);
                     flashButton(btn);
                     flashItem(item);
                 }
@@ -206,9 +223,11 @@
                 const section = getSectionName(item);
                 const rawName = nameEl.textContent.trim();
                 const name = section ? section + ' - ' + rawName : rawName;
-                const price = parsePrice(priceEl.textContent.trim());
-                if (price > 0) {
-                    addItem(name, price);
+                const parsed = parsePriceText(priceEl.textContent.trim());
+                const imgEl = item.querySelector('.drink-image, img');
+                const image = imgEl ? imgEl.src : '';
+                if (parsed.price > 0) {
+                    addItem(name, parsed.price, image, parsed.price2);
                     flashButton(btn);
                     flashItem(item);
                 }
@@ -223,6 +242,19 @@
         // Handle prices like "6", "$6", "6.50", etc.
         const num = parseFloat(text.replace(/[^0-9.]/g, ''));
         return isNaN(num) ? 0 : num;
+    }
+
+    function parsePriceText(text) {
+        // Handle slash prices like "17/19", "6 / 7" as well as normal prices
+        if (text.includes('/')) {
+            const parts = text.split('/');
+            const p1 = parseFloat(parts[0].replace(/[^0-9.]/g, ''));
+            const p2 = parseFloat(parts[1].replace(/[^0-9.]/g, ''));
+            if (!isNaN(p1) && !isNaN(p2)) {
+                return { price: p1, price2: p2 };
+            }
+        }
+        return { price: parsePrice(text), price2: null };
     }
 
     function flashButton(btn) {
@@ -285,24 +317,26 @@
         footer.style.display = '';
         let html = '';
         cart.forEach((item, i) => {
+            const imgHtml = item.image ? `<img class="cart-item-image" src="${escapeHtml(item.image)}" alt="">` : '';
             html += `
                 <div class="cart-item">
+                    ${imgHtml}
                     <div class="cart-item-info">
                         <div class="cart-item-name">${escapeHtml(item.name)}</div>
-                        <div class="cart-item-price">$${item.price.toFixed(0)} each</div>
+                        <div class="cart-item-price">${formatItemPrice(item)} each</div>
                     </div>
                     <div class="cart-item-controls">
                         <button class="cart-qty-btn" data-action="dec" data-index="${i}" aria-label="Decrease quantity">−</button>
                         <span class="cart-item-qty">${item.qty}</span>
                         <button class="cart-qty-btn" data-action="inc" data-index="${i}" aria-label="Increase quantity">+</button>
                     </div>
-                    <div class="cart-item-subtotal">$${(item.price * item.qty).toFixed(0)}</div>
+                    <div class="cart-item-subtotal">${formatItemSubtotal(item)}</div>
                     <button class="cart-item-delete" data-action="del" data-index="${i}" aria-label="Remove item">🗑</button>
                 </div>
             `;
         });
         body.innerHTML = html;
-        totalEl.innerHTML = `<span>$</span>${totalPrice().toFixed(0)}`;
+        totalEl.innerHTML = formatTotal();
     }
 
     function renderWaiterView() {
@@ -314,18 +348,48 @@
 
         let html = '';
         cart.forEach(item => {
+            const imgHtml = item.image ? `<img class="waiter-item-image" src="${escapeHtml(item.image)}" alt="">` : '';
             html += `
                 <div class="waiter-item">
+                    ${imgHtml}
                     <div class="waiter-item-left">
                         <div class="waiter-item-name">${escapeHtml(item.name)}</div>
-                        <div class="waiter-item-qty">× ${item.qty}  ·  $${item.price.toFixed(0)} each</div>
+                        <div class="waiter-item-qty">× ${item.qty}  ·  ${formatItemPrice(item)} each</div>
                     </div>
-                    <div class="waiter-item-subtotal">$${(item.price * item.qty).toFixed(0)}</div>
+                    <div class="waiter-item-subtotal">${formatItemSubtotal(item)}</div>
                 </div>
             `;
         });
         body.innerHTML = html;
-        totalEl.textContent = `$${totalPrice().toFixed(0)}`;
+        totalEl.textContent = formatTotal();
+    }
+
+    function formatPrice(num) {
+        return num % 1 === 0 ? num.toFixed(0) : num.toFixed(1);
+    }
+
+    function formatItemPrice(item) {
+        // Format price, showing slash format if price2 exists
+        if (item.price2) {
+            return formatPrice(item.price) + '/' + formatPrice(item.price2);
+        }
+        return formatPrice(item.price);
+    }
+
+    function formatItemSubtotal(item) {
+        if (item.price2) {
+            return formatPrice(item.price * item.qty) + '/' + formatPrice(item.price2 * item.qty);
+        }
+        return formatPrice(item.price * item.qty);
+    }
+
+    function formatTotal() {
+        const t1 = totalPrice();
+        const t2 = totalPrice2();
+        if (hasAnyPrice2() && t1 !== t2) {
+            return formatPrice(t1) + '/' + formatPrice(t2);
+        }
+        return formatPrice(t1);
     }
 
     function escapeHtml(str) {
