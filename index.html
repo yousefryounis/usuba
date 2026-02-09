@@ -311,9 +311,9 @@
             width: 45px;
             height: 45px;
             border-radius: 6px;
-            object-fit: cover;
+            object-fit: contain;
             flex-shrink: 0;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            background: none;
         }
 
         .section-image {
@@ -626,10 +626,11 @@
         }
 
         .wok-item-options {
-            display: flex;
-            gap: 6px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
             margin-top: 4px;
-            flex-wrap: wrap;
+            max-width: 220px;
         }
 
         .wok-item-option {
