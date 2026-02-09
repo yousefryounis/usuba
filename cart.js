@@ -236,6 +236,39 @@
             // Mark if already in cart
             markIfInCart(item, nameEl, getSectionName(item));
         });
+
+        // Mochi flavor M/L buttons
+        document.querySelectorAll('.mochi-size-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const flavor = btn.dataset.flavor;
+                const size = btn.dataset.size;
+                const price = parseFloat(btn.dataset.price);
+                const name = `Desserts - Japanese Mochi (${size}) - ${flavor}`;
+                const mochiImg = document.querySelector('.dessert-title .section-image-wide');
+                const image = mochiImg ? mochiImg.src : '';
+                if (price > 0) {
+                    addItem(name, price, image);
+                    // Flash the button
+                    const origText = btn.textContent;
+                    btn.classList.add('added');
+                    btn.textContent = '✓';
+                    setTimeout(() => {
+                        btn.classList.remove('added');
+                        btn.textContent = origText;
+                    }, 600);
+                    // Flash the flavor row
+                    const flavorEl = btn.closest('.mochi-flavor');
+                    if (flavorEl) {
+                        flavorEl.classList.remove('cart-item-flash');
+                        void flavorEl.offsetWidth;
+                        flavorEl.classList.add('cart-item-flash');
+                        flavorEl.classList.add('cart-item-added');
+                        setTimeout(() => flavorEl.classList.remove('cart-item-flash'), 700);
+                    }
+                }
+            });
+        });
     }
 
     function parsePrice(text) {

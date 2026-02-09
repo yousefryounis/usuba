@@ -509,7 +509,7 @@
             width: 50px;
             height: 50px;
             background: linear-gradient(135deg, #c41e3a 0%, #a01830 100%);
-            color: #000;
+            color: #fff;
             border: none;
             border-radius: 50%;
             cursor: pointer;
@@ -550,20 +550,65 @@
         .mochi-flavor {
             background: #fff;
             border: 1px solid #c41e3a;
-            border-radius: 25px;
-            padding: 8px 18px;
+            border-radius: 12px;
+            padding: 10px 14px;
             font-size: 0.9em;
             color: #1a1a1a;
             font-weight: 400;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
         }
 
         .mochi-flavor:hover {
-            background: #c41e3a;
-            color: #fff;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+        }
+
+        .mochi-flavor-name {
+            flex: 1;
+            text-align: left;
+        }
+
+        .mochi-size-btns {
+            display: flex;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+
+        .mochi-size-btn {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: #c41e3a;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            padding: 0;
+        }
+
+        .mochi-size-btn:hover {
+            background: #e63946;
+            transform: scale(1.15);
+            box-shadow: 0 2px 10px rgba(196, 30, 58, 0.4);
+        }
+
+        .mochi-size-btn:active {
+            transform: scale(0.95);
+        }
+
+        .mochi-size-btn.added {
+            background: #25D366;
         }
 
         .dessert-item {
@@ -2127,20 +2172,20 @@
                 <div class="dessert-title"><img loading="lazy" src="images/misc/japanese-mochi.webp" alt="Japanese Mochi" class="section-image-wide"> <span>Japanese Mochi <span style="color: #c41e3a;">M/6 , L/7</span></span></div>
                 <div class="dessert-subtitle">Choose your flavor</div>
                 <div class="mochi-flavors">
-                    <span class="mochi-flavor">Tiramisu</span>
-                    <span class="mochi-flavor">Yuzu</span>
-                    <span class="mochi-flavor">Coconut</span>
-                    <span class="mochi-flavor">Matcha</span>
-                    <span class="mochi-flavor">Lotus</span>
-                    <span class="mochi-flavor">Brownie</span>
-                    <span class="mochi-flavor">Caramel</span>
-                    <span class="mochi-flavor">Mango</span>
-                    <span class="mochi-flavor">Strawberry</span>
-                    <span class="mochi-flavor">Raspberry</span>
-                    <span class="mochi-flavor">Cheese Cake</span>
-                    <span class="mochi-flavor">Tropical</span>
-                    <span class="mochi-flavor">Chocolate Strawberry</span>
-                    <span class="mochi-flavor">Chocolate Raspberry</span>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Tiramisu</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Tiramisu" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Tiramisu" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Yuzu</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Yuzu" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Yuzu" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Coconut</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Coconut" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Coconut" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Matcha</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Matcha" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Matcha" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Lotus</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Lotus" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Lotus" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Brownie</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Brownie" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Brownie" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Caramel</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Caramel" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Caramel" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Mango</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Mango" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Mango" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Strawberry</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Strawberry" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Strawberry" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Raspberry</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Raspberry" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Raspberry" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Cheese Cake</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Cheese Cake" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Cheese Cake" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Tropical</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Tropical" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Tropical" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Chocolate Strawberry</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Chocolate Strawberry" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Chocolate Strawberry" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Chocolate Raspberry</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Chocolate Raspberry" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Chocolate Raspberry" data-size="L" data-price="7">L</button></div></div>
                 </div>
             </div>
         </div>
