@@ -540,7 +540,6 @@
             gap: 10px;
             margin-top: 15px;
             max-width: 100%;
-            overflow: hidden;
         }
 
         @media (max-width: 768px) {
@@ -564,7 +563,6 @@
             justify-content: space-between;
             gap: 6px;
             min-width: 0;
-            overflow: hidden;
         }
 
         .mochi-flavor:hover {
@@ -576,9 +574,6 @@
             flex: 1;
             min-width: 0;
             text-align: left;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
         }
 
         .mochi-size-btns {
@@ -634,6 +629,7 @@
             display: flex;
             gap: 6px;
             margin-top: 4px;
+            flex-wrap: wrap;
         }
 
         .wok-item-option {
@@ -647,6 +643,12 @@
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
             text-align: center;
+            cursor: pointer;
+        }
+
+        .wok-item-option .wok-option-price {
+            color: #c41e3a;
+            font-weight: 600;
         }
 
         .wok-item-option:hover {
@@ -654,6 +656,20 @@
             color: #fff;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+        }
+
+        .wok-item-option:hover .wok-option-price {
+            color: #fff;
+        }
+
+        .wok-item-option.added {
+            background: #25D366;
+            border-color: #25D366;
+            color: #fff;
+        }
+
+        .wok-item-option.added .wok-option-price {
+            color: #fff;
         }
 
         .yakisoba-title {
@@ -1326,10 +1342,10 @@
                 <div class="menu-item"><img loading="lazy" src="images/misc/yakisoba.png" alt="Yakisoba" class="item-image"><div class="item-info">
                         <div class="item-name">Yakisoba (Japanese Noodles)</div>
                         <div class="wok-item-options">
-                            <span class="wok-item-option">Vegetarian 14</span>
-                            <span class="wok-item-option">Chicken 17</span>
-                            <span class="wok-item-option">Beef 19</span>
-                            <span class="wok-item-option">Shrimp 19</span>
+                            <span class="wok-item-option" data-name="Vegetarian" data-price="14">Vegetarian <span class="wok-option-price">14</span></span>
+                            <span class="wok-item-option" data-name="Chicken" data-price="17">Chicken <span class="wok-option-price">17</span></span>
+                            <span class="wok-item-option" data-name="Beef" data-price="19">Beef <span class="wok-option-price">19</span></span>
+                            <span class="wok-item-option" data-name="Shrimp" data-price="19">Shrimp <span class="wok-option-price">19</span></span>
                         </div>
                     </div>
                 </div>

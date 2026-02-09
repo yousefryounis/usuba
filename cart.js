@@ -269,6 +269,40 @@
                 }
             });
         });
+
+        // Yakisoba / wok-item-option buttons
+        document.querySelectorAll('.wok-item-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const menuItem = option.closest('.menu-item');
+                const section = menuItem ? getSectionName(menuItem) : '';
+                const itemName = menuItem ? menuItem.querySelector('.item-name')?.textContent.trim() : 'Yakisoba';
+                const optionName = option.dataset.name;
+                const price = parseFloat(option.dataset.price);
+                const name = (section ? section + ' - ' : '') + itemName + ' - ' + optionName;
+                const imgEl = menuItem ? menuItem.querySelector('.item-image') : null;
+                const image = imgEl ? imgEl.src : '';
+                if (price > 0) {
+                    addItem(name, price, image);
+                    // Flash the option
+                    const origHtml = option.innerHTML;
+                    option.classList.add('added');
+                    option.textContent = '✓';
+                    setTimeout(() => {
+                        option.classList.remove('added');
+                        option.innerHTML = origHtml;
+                    }, 600);
+                    // Flash the menu item
+                    if (menuItem) {
+                        menuItem.classList.remove('cart-item-flash');
+                        void menuItem.offsetWidth;
+                        menuItem.classList.add('cart-item-flash');
+                        menuItem.classList.add('cart-item-added');
+                        setTimeout(() => menuItem.classList.remove('cart-item-flash'), 700);
+                    }
+                }
+            });
+        });
     }
 
     function parsePrice(text) {
