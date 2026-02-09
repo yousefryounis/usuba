@@ -139,7 +139,7 @@
                     <span class="waiter-total-label">Total</span>
                     <span class="waiter-total-value" id="waiterTotal"></span>
                 </div>
-                <div class="waiter-note">Usuba Sushi Bar & Izakaya</div>
+                    <div class="waiter-note">Usuba Sushi Bar & Izakaya</div>
             </div>
         `;
         document.body.appendChild(waiterView);
