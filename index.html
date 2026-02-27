@@ -2880,16 +2880,28 @@
 
             let totalVisible = 0;
             menuSections.forEach(section => {
+                const titleNode = section.querySelector('.category-title');
+                const sectionMatches = titleNode && titleNode.textContent.toLowerCase().includes(q);
+
                 const items = section.querySelectorAll('.menu-item');
-                let sectionMatches = 0;
+                let itemMatchesCount = 0;
+
                 items.forEach(item => {
-                    const matches = item.textContent.toLowerCase().includes(q);
-                    item.classList.toggle('search-highlight', matches);
-                    item.classList.toggle('search-dimmed', !matches);
-                    if (matches) sectionMatches++;
+                    const itemTextMatch = item.textContent.toLowerCase().includes(q);
+
+                    if (sectionMatches) {
+                        item.classList.add('search-highlight');
+                        item.classList.remove('search-dimmed');
+                    } else {
+                        item.classList.toggle('search-highlight', itemTextMatch);
+                        item.classList.toggle('search-dimmed', !itemTextMatch);
+                    }
+
+                    if (itemTextMatch) itemMatchesCount++;
                 });
-                section.style.display = sectionMatches > 0 ? '' : 'none';
-                if (sectionMatches > 0) totalVisible++;
+
+                section.style.display = (sectionMatches || itemMatchesCount > 0) ? '' : 'none';
+                if (sectionMatches || itemMatchesCount > 0) totalVisible++;
             });
             menuNoResults.style.display = totalVisible === 0 ? 'block' : 'none';
         });
