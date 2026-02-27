@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -248,7 +249,7 @@
         }
 
         .category-section {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.97);
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 20px;
@@ -542,6 +543,114 @@
             box-shadow: 0 6px 20px rgba(196, 30, 58, 0.6);
         }
 
+        /* Header fade transition */
+        .header-fade {
+            height: 50px;
+            background: linear-gradient(to bottom, #111312 0%, transparent 100%);
+            pointer-events: none;
+            margin-top: -50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Search bar */
+        .search-wrapper {
+            max-width: 520px;
+            margin: 0 auto 10px;
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .search-inner {
+            display: flex;
+            align-items: center;
+            background: #1c1e1d;
+            border: 1px solid rgba(196, 30, 58, 0.35);
+            border-radius: 30px;
+            padding: 10px 18px;
+            gap: 10px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-inner:focus-within {
+            border-color: #c41e3a;
+            box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.12);
+        }
+
+        .search-icon {
+            color: #f0f0f0;
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            transition: color 0.3s ease;
+        }
+
+        .search-inner:focus-within .search-icon {
+            color: #c41e3a;
+        }
+
+        .search-input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            color: #f0f0f0;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        /* Hide native WebKit search cross */
+        .search-input::-webkit-search-decoration,
+        .search-input::-webkit-search-cancel-button,
+        .search-input::-webkit-search-results-button,
+        .search-input::-webkit-search-results-decoration {
+            -webkit-appearance: none;
+        }
+
+        .search-clear {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 1em;
+            padding: 0;
+            line-height: 1;
+            display: none;
+            transition: color 0.2s ease;
+        }
+
+        .search-clear:hover {
+            color: #c41e3a;
+        }
+
+        .search-no-results {
+            text-align: center;
+            color: #666;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            padding: 30px 0 10px;
+            display: none;
+        }
+
+        .search-highlight {
+            background: rgba(196, 30, 58, 0.06) !important;
+            border-left: 2px solid #c41e3a !important;
+            border-radius: 4px;
+            padding-left: 8px !important;
+            transition: background 0.2s ease, opacity 0.2s ease;
+        }
+
+        .search-dimmed {
+            opacity: 0.18;
+            transition: opacity 0.2s ease;
+        }
+
         .mochi-flavors {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -754,7 +863,6 @@
             font-size: 0.95em;
             color: #666;
             margin-bottom: 15px;
-            font-style: italic;
             text-align: center;
         }
 
@@ -982,6 +1090,23 @@
         </nav>
     </div>
 
+    <!-- Header to content gradient fade -->
+    <div class="header-fade"></div>
+
+    <!-- Search bar -->
+    <div class="search-wrapper">
+        <div class="search-inner">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" class="search-input" id="menuSearch" placeholder="Search food, sushi, starters…"
+                autocomplete="off" spellcheck="false">
+            <button class="search-clear" id="menuSearchClear" aria-label="Clear search">✕</button>
+        </div>
+    </div>
+
     <div class="container">
         <!-- SOUPS & STARTERS -->
         <div class="category-section" id="soups-starters">
@@ -989,19 +1114,25 @@
 
             <div class="subcategory">Soups</div>
             <div class="items-grid">
-                <div class="menu-item"><img loading="lazy" src="webp-images/soups/shiro - white miso.webp" alt="Shiro - White Miso" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/soups/shiro - white miso.webp"
+                        alt="Shiro - White Miso" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Shiro - White Miso</div>
                         <div class="item-description">Wakame, tofu, shitake mushrooms</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/soups/aka - red miso.webp" alt="Aka - Red Miso" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/soups/aka - red miso.webp"
+                        alt="Aka - Red Miso" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Aka - Red Miso</div>
                         <div class="item-description">Wakame, mussels, green onions</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/soups/udon noodles shrimp spicy soup.webp" alt="Udon Noodles Shrimp Spicy Soup" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/soups/udon noodles shrimp spicy soup.webp"
+                        alt="Udon Noodles Shrimp Spicy Soup" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Udon Noodles Shrimp Spicy Soup</div>
                         <div class="item-description">Shrimps, mussels, tomatoes, mushrooms</div>
                     </div>
@@ -1011,114 +1142,156 @@
 
             <div class="subcategory">Cold Starters</div>
             <div class="items-grid">
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/crispy-rice.webp" alt="Crispy Rice" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/crispy-rice.webp"
+                        alt="Crispy Rice" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Crispy Rice</div>
                         <div class="item-description">Spicy tuna or spicy salmon (2 pieces)</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tiradito-salmon.webp" alt="Tiradito Salmon" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tiradito-salmon.webp"
+                        alt="Tiradito Salmon" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Tiradito Salmon</div>
                         <div class="item-description">Spicy citrus sauce</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/ceviche-white-fish.webp" alt="Ceviche White Fish" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/ceviche-white-fish.webp"
+                        alt="Ceviche White Fish" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Ceviche White Fish</div>
                         <div class="item-description">Citrus sauce</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tataki-tuna.webp" alt="Tataki Tuna" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tataki-tuna.webp"
+                        alt="Tataki Tuna" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Tataki Tuna</div>
                         <div class="item-description">With tosazu sauce and ponzu</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tataki-salmon.webp" alt="Tataki Salmon" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tataki-salmon.webp"
+                        alt="Tataki Salmon" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Tataki Salmon</div>
                         <div class="item-description">With sudashi ponzu sauce</div>
                     </div>
                     <div class="item-price">15</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/sweet-shrimp-capraccio.webp" alt="Sweet Shrimp Carpaccio" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/sweet-shrimp-capraccio.webp"
+                        alt="Sweet Shrimp Carpaccio" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Sweet Shrimp Carpaccio</div>
                         <div class="item-description">Yuzu and olive oil</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/scallops-capraccio.webp" alt="Scallops Carpaccio" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/scallops-capraccio.webp"
+                        alt="Scallops Carpaccio" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Scallops Carpaccio</div>
                         <div class="item-description">Yuzu soy dressing</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/smoked-salmon-capraccio.webp" alt="Smoked Salmon Carpaccio" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/smoked-salmon-capraccio.webp"
+                        alt="Smoked Salmon Carpaccio" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Smoked Salmon Carpaccio</div>
                     </div>
                     <div class="item-price">14</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/salmon-capraccio.webp" alt="Salmon Carpaccio" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/salmon-capraccio.webp"
+                        alt="Salmon Carpaccio" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Salmon Carpaccio</div>
                     </div>
                     <div class="item-price">15</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tuna-capraccio.webp" alt="Tuna Carpaccio" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tuna-capraccio.webp"
+                        alt="Tuna Carpaccio" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Tuna Carpaccio</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/hamachi-yellowtail-capraccio.webp" alt="Hamachi, Yellow Tail Carpaccio" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy"
+                        src="webp-images/cold-starters/hamachi-yellowtail-capraccio.webp"
+                        alt="Hamachi, Yellow Tail Carpaccio" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Hamachi, Yellow Tail Carpaccio</div>
                     </div>
                     <div class="item-price">17</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tuna-tartar.webp" alt="Japanese Tuna Tartar" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/tuna-tartar.webp"
+                        alt="Japanese Tuna Tartar" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Japanese Tuna Tartar</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/truffle-yuzu-salmon-tartar.webp" alt="Truffle Yuzu Salmon Tartar" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy"
+                        src="webp-images/cold-starters/truffle-yuzu-salmon-tartar.webp" alt="Truffle Yuzu Salmon Tartar"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Truffle Yuzu Salmon Tartar</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/taco-wasabi.webp" alt="Taco Wasabi" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/taco-wasabi.webp"
+                        alt="Taco Wasabi" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Taco Wasabi</div>
                         <div class="item-description">Raw octopus with wasabi</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/new style trio sashimi.webp" alt="New Style Trio Sashimi" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/new style trio sashimi.webp"
+                        alt="New Style Trio Sashimi" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">New Style Trio Sashimi</div>
                         <div class="item-description">Yuzu soy shiso dressing</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/marinated-salmon.webp" alt="Marinated Salmon" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/marinated-salmon.webp"
+                        alt="Marinated Salmon" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Marinated Salmon</div>
                         <div class="item-description">Yuzu miso dressing</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/japanese oysters.webp" alt="Japanese Oysters" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/japanese oysters.webp"
+                        alt="Japanese Oysters" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Japanese Oysters</div>
                         <div class="item-description">Dashi vinegar and ponzu sauce</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/rice-paper-roll.webp" alt="Rice Paper Roll" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/rice-paper-roll.webp"
+                        alt="Rice Paper Roll" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Rice Paper Roll</div>
                         <div class="item-description">Salmon, fresh crab, avocado</div>
                     </div>
                     <div class="item-price">12</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/fresh wasabi.webp" alt="Fresh Wasabi" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/fresh wasabi.webp"
+                        alt="Fresh Wasabi" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Fresh Wasabi</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/caviar.webp" alt="Russian Osetra Caviar" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/cold-starters/caviar.webp"
+                        alt="Russian Osetra Caviar" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Russian Osetra Caviar</div>
                         <div class="item-description">10g</div>
                     </div>
@@ -1128,123 +1301,165 @@
 
             <div class="subcategory">Hot Starters</div>
             <div class="items-grid">
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/edamame.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/edamame.webp" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Edamame, Salted or Spicy</div>
                     </div>
                     <div class="item-price">6 / 7</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/huramaki-vegetarian.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/huramaki-vegetarian.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Harumaki - Vegetarian Spring Rolls</div>
                         <div class="item-description">5 pieces</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/huramaki-shrimp.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/huramaki-shrimp.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Harumaki - Shrimps Spring Rolls</div>
                         <div class="item-description">5 pieces</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/gyoza-chicken.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/gyoza-chicken.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Gyoza - Chicken Dumplings</div>
                         <div class="item-description">5 pieces</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/gyoza-shrimp.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/gyoza-shrimp.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Gyoza - Shrimps Dumplings</div>
                         <div class="item-description">5 pieces</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/gyoza-vegetarian.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/gyoza-vegetarian.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Gyoza - Vegetarian Dumplings</div>
                         <div class="item-description">5 pieces</div>
                     </div>
                     <div class="item-price">5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/beef-dumplings.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/beef-dumplings.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Korean BBQ Beef Dumplings</div>
                         <div class="item-description">5 pieces</div>
                     </div>
                     <div class="item-price">11</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/tempura-shrimps.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/tempura-shrimps.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Tempura Shrimps with Tartare Sauce</div>
                         <div class="item-description">5 pieces</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/grilled-octopus.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/grilled-octopus.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Grilled Octopus</div>
                         <div class="item-description">Yuzu tomato dressing</div>
                     </div>
                     <div class="item-price">16</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/salmon-panko.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/salmon-panko.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Salmon Panko Bites with Tartare Sauce</div>
                         <div class="item-description">5 pieces</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/shojin.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/shojin.webp" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Shojin, Mix Vegetables Tempura</div>
                         <div class="item-description">8 pieces</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/dynamite-shrimps.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/dynamite-shrimps.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Dynamite Shrimps</div>
                         <div class="item-description">8 pieces</div>
                     </div>
                     <div class="item-price">12</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/rock-shrimps.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/rock-shrimps.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Rock Shrimps</div>
                     </div>
                     <div class="item-price">12</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/sweet-chili-shrimps.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/sweet-chili-shrimps.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Sweet Chilli Shrimps</div>
                         <div class="item-description">8 pieces</div>
                     </div>
                     <div class="item-price">12</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/crispy-calamari.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/crispy-calamari.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Crispy Japanese Calamari</div>
                         <div class="item-description">5 pieces</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/miso-black-cod.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/miso-black-cod.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Miso Black Cod</div>
                     </div>
                     <div class="item-price">18</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/beef-tataki.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/beef-tataki.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Prime Tenderloin Beef Tataki</div>
                         <div class="item-description">With butter ponzu</div>
                     </div>
                     <div class="item-price">15</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/karaage.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/karaage.webp" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kara Age, Japanese Style Fried Chicken</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/oyster-mushrooms.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/oyster-mushrooms.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Grilled Oyster Mushrooms</div>
                         <div class="item-description">With garlic lemon mustard sauce</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/crab-tempura.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/crab-tempura.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Soft Shell Crab Tempura</div>
                         <div class="item-description">Ponzu sauce</div>
                     </div>
                     <div class="item-price">11</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/grilled-mussels.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/hot-starters/grilled-mussels.webp"
+                        alt="Menu item" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Grilled Mussels</div>
                         <div class="item-description">with Miso and Cheese (5 pcs)</div>
                     </div>
@@ -1255,36 +1470,43 @@
 
         <!-- SALADS -->
         <div class="category-section" id="salads">
-            <h2 class="category-title"><img loading="lazy" src="images/misc/salad.webp" alt="Salads" class="section-image"> Salads</h2>
-    
+            <h2 class="category-title"><img loading="lazy" src="images/misc/salad.webp" alt="Salads"
+                    class="section-image"> Salads</h2>
+
             <div class="items-grid">
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Wakame Seaweed Salad</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Green Salad</div>
                         <div class="item-description">With ginger or sesame sauce</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Crab and Salmon with Miso Dressing</div>
                     </div>
                     <div class="item-price">14</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Salmon with Miso or Sesame Dressing</div>
                     </div>
                     <div class="item-price">14</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Kani, Crab Salad with Miso Dressing</div>
                     </div>
                     <div class="item-price">13</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Fresh Crab Salad</div>
                         <div class="item-description">Yuzu, mustard, olive oil</div>
                     </div>
@@ -1297,34 +1519,46 @@
         <div class="category-section" id="on-the-grill">
             <h2 class="category-title">On the Grill</h2>
             <div class="items-grid">
-                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/salmon-teriyaki.png" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/salmon-teriyaki.png" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Grilled Salmon with Teriyaki Sauce</div>
                     </div>
                     <div class="item-price">19</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/seabass.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/seabass.webp" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Grilled Seabass</div>
                         <div class="item-description">With Japanese seven spices sauce</div>
                     </div>
                     <div class="item-price">21</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/tenderloin.png" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/tenderloin.png" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Prime Beef Tenderloin</div>
                         <div class="item-description">With ginger sauce</div>
                     </div>
                     <div class="item-price">21</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/ribeye.png" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/ribeye.png" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Dry Aged 27 Days Ribeye</div>
                     </div>
                     <div class="item-price">26</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/sirloin.png" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/sirloin.png" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Dry Aged 27 Days Sirloin</div>
                     </div>
                     <div class="item-price">24</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/wagyu.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/on-the-grill/wagyu.webp" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Japanese Wagyu A5 Miyazaki</div>
                         <div class="item-description">100g</div>
                     </div>
@@ -1337,36 +1571,50 @@
         <div class="category-section" id="wok-specialties">
             <h2 class="category-title">Wok Specialties</h2>
             <div class="items-grid">
-                <div class="menu-item"><img loading="lazy" src="webp-images/wok/otaya.webp" alt="Otaya" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/wok/otaya.webp" alt="Otaya"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Otaya (Japanese Sweet & Sour)</div>
                         <div class="item-description">Chicken or Shrimps</div>
                     </div>
                     <div class="item-price">17/19</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/wok/karai.webp" alt="Karai" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/wok/karai.webp" alt="Karai"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Karai (Japanese Style Spicy)</div>
                         <div class="item-description">Chicken, Shrimps or Beef</div>
                     </div>
                     <div class="item-price">17/19</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/wok/sesame-chicken.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/wok/sesame-chicken.webp" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Sesame Chicken</div>
                     </div>
                     <div class="item-price">18</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="webp-images/wok/broccoli-beef.webp" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="webp-images/wok/broccoli-beef.webp" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Broccoli Beef</div>
                         <div class="item-description">With ginger sauce</div>
                     </div>
                     <div class="item-price">19</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/misc/yakisoba.png" alt="Yakisoba" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/misc/yakisoba.png" alt="Yakisoba"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Yakisoba (Japanese Noodles)</div>
                         <div class="wok-item-options">
-                            <span class="wok-item-option" data-name="Vegetarian" data-price="14">Vegetarian <span class="wok-option-price">14</span></span>
-                            <span class="wok-item-option" data-name="Chicken" data-price="17">Chicken <span class="wok-option-price">17</span></span>
-                            <span class="wok-item-option" data-name="Beef" data-price="19">Beef <span class="wok-option-price">19</span></span>
-                            <span class="wok-item-option" data-name="Shrimp" data-price="19">Shrimp <span class="wok-option-price">19</span></span>
+                            <span class="wok-item-option" data-name="Vegetarian" data-price="14">Vegetarian <span
+                                    class="wok-option-price">14</span></span>
+                            <span class="wok-item-option" data-name="Chicken" data-price="17">Chicken <span
+                                    class="wok-option-price">17</span></span>
+                            <span class="wok-item-option" data-name="Beef" data-price="19">Beef <span
+                                    class="wok-option-price">19</span></span>
+                            <span class="wok-item-option" data-name="Shrimp" data-price="19">Shrimp <span
+                                    class="wok-option-price">19</span></span>
                         </div>
                     </div>
                 </div>
@@ -1375,7 +1623,8 @@
 
         <!-- OBENTOS -->
         <div class="category-section" id="obentos">
-            <h2 class="category-title"><img loading="lazy" src="images/misc/obento.jpeg" alt="Obentos (Set Boxes)" class="section-image"> Obentos (Set Boxes)</h2>
+            <h2 class="category-title"><img loading="lazy" src="images/misc/obento.jpeg" alt="Obentos (Set Boxes)"
+                    class="section-image"> Obentos (Set Boxes)</h2>
             <div class="items-grid single-column">
                 <div class="menu-item">
                     <div class="item-info">
@@ -1431,80 +1680,96 @@
 
         <!-- SASHIMI -->
         <div class="category-section" id="sashimi">
-            <h2 class="category-title"><img loading="lazy" src="images/misc/sashimi.png" alt="Sashimi" class="section-image"> Sashimi (3 Pieces)</h2>
+            <h2 class="category-title"><img loading="lazy" src="images/misc/sashimi.png" alt="Sashimi"
+                    class="section-image"> Sashimi (3 Pieces)</h2>
             <div class="items-grid">
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Salmon</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Tuna</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Hamachi, Yellow Tail</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Ama Ebi, Sweet Shrimps</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Kani, Crab</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Fresh Crab</div>
                         <div class="item-description">1 piece</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Ika, Japanese Calamari</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Izumidai, Red Snapper</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Ebi, Cooked Shrimps</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Smoked Salmon</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Unagi, Eel</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Ikura, Salmon Roe</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Hokkigai, Surf Clam</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Hotate, Scallops</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Uni</div>
                     </div>
                     <div class="item-price">9</div>
@@ -1515,69 +1780,83 @@
 
         <!-- NIGIRI -->
         <div class="category-section" id="nigiri">
-            <h2 class="category-title"><img loading="lazy" src="images/misc/nigiri.png" alt="Nigiri" class="section-image"> Nigiri (2 Pieces)</h2>
+            <h2 class="category-title"><img loading="lazy" src="images/misc/nigiri.png" alt="Nigiri"
+                    class="section-image"> Nigiri (2 Pieces)</h2>
             <div class="items-grid">
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Salmon</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Tuna</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Tempura Shrimps</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Butter Fish</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Ika</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Unagi, Eel</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Crab</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Aburi Salmon, Torched Salmon</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Izumidai</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Hamachi, Yellow Tail</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Ebi, Cooked Shrimps</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Tuna Foie Gras</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Wagyu</div>
                     </div>
                     <div class="item-price">10</div>
@@ -1589,91 +1868,122 @@
         <div class="category-section" id="futomaki">
             <h2 class="category-title">Futomaki (6 Pieces)</h2>
             <div class="items-grid single-column">
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/kamikaze-salmon.jpg" alt="Kamikaze Salmon" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/kamikaze-salmon.jpg"
+                        alt="Kamikaze Salmon" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kamikaze Salmon</div>
                         <div class="item-description">Spicy salmon, tempura flakes, avocado, cucumber</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/kamikaze-tuna.jpg" alt="Kamikaze Tuna" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/kamikaze-tuna.jpg" alt="Kamikaze Tuna"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kamikaze Tuna</div>
                         <div class="item-description">Spicy tuna, tempura flakes, avocado, cucumber</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/kamikaze-hamachi.jpg" alt="Kamikaze Hamachi" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/kamikaze-hamachi.jpg"
+                        alt="Kamikaze Hamachi" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kamikaze Hamachi</div>
                         <div class="item-description">Spicy hamachi, tempura flakes, avocado, cucumber</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/kumo.jpg" alt="Kumo" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/kumo.jpg" alt="Kumo" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kumo</div>
                         <div class="item-description">Soft shell crab, cucumber, lettuce, avocado, teriyaki sauce</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/hokkaido.jpg" alt="Hokkaido" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/hokkaido.jpg" alt="Hokkaido"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Hokkaido</div>
                         <div class="item-description">Shrimp tempura, sweet potatoes, avocado, spicy mayo</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/umeda.jpg" alt="Umeda" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/umeda.jpg" alt="Umeda"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Umeda</div>
-                        <div class="item-description">Rice outside-sesame seeds, panko, crab surimi, lettuce, avocado, cucumber</div>
+                        <div class="item-description">Rice outside-sesame seeds, panko, crab surimi, lettuce, avocado,
+                            cucumber</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/ninja.jpg" alt="Ninja" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/ninja.jpg" alt="Ninja"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Ninja</div>
                         <div class="item-description">Eel, salmon, avocado, cucumber, teriyaki sauce</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/osaka.jpg" alt="Osaka" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/osaka.jpg" alt="Osaka"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Osaka</div>
-                        <div class="item-description">Salmon tempura, green onions, avocado, cucumber, sesame seeds, teriyaki sauce</div>
+                        <div class="item-description">Salmon tempura, green onions, avocado, cucumber, sesame seeds,
+                            teriyaki sauce</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/onsen.jpg" alt="Onsen" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/onsen.jpg" alt="Onsen"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Onsen</div>
                         <div class="item-description">White fish tempura, green onions, crab, spicy tuna, avocado</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/koshi.jpg" alt="Koshi" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/koshi.jpg" alt="Koshi"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Koshi</div>
                         <div class="item-description">Scallop katsu, crab, tobiko, cucumber, avocado</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/tottori.jpg" alt="Tottori" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/tottori.jpg" alt="Tottori"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Tottori</div>
                         <div class="item-description">Spicy tuna, shrimp katsu, avocado</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/harakiri.jpg" alt="Harakiri" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/harakiri.jpg" alt="Harakiri"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Harakiri</div>
                         <div class="item-description">Cooked shrimps, tuna, cucumber, sweet chili sauce</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/wafu.jpg" alt="Wafu" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/wafu.jpg" alt="Wafu" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Wafu</div>
-                        <div class="item-description">Cooked shrimps, crab, cucumber, lettuce, sesame, sweet chili sauce</div>
+                        <div class="item-description">Cooked shrimps, crab, cucumber, lettuce, sesame, sweet chili sauce
+                        </div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/yokohama.jpg" alt="Yokohama" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/yokohama.jpg" alt="Yokohama"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Yokohama</div>
                         <div class="item-description">Eel, shrimp tempura, cucumber, oshinko, teriyaki sauce</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/futomaki/aomori.jpg" alt="Aomori" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/futomaki/aomori.jpg" alt="Aomori"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Aomori</div>
                         <div class="item-description">Spicy salmon, cream cheese, avocado, crab</div>
                     </div>
@@ -1684,21 +1994,25 @@
 
         <!-- DONBURI -->
         <div class="category-section" id="donburi">
-            <h2 class="category-title"><img loading="lazy" src="images/misc/donburi.jpg" alt="Donburi" class="section-image"> Donburi</h2>
+            <h2 class="category-title"><img loading="lazy" src="images/misc/donburi.jpg" alt="Donburi"
+                    class="section-image"> Donburi</h2>
             <div class="items-grid single-column">
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Salmon</div>
                         <div class="item-description">Fresh salmon over seasoned rice</div>
                     </div>
                     <div class="item-price">20</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Unagi</div>
                         <div class="item-description">Grilled eel over seasoned rice</div>
                     </div>
                     <div class="item-price">25</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Tempura Shrimps</div>
                         <div class="item-description">Crispy tempura shrimps over seasoned rice</div>
                     </div>
@@ -1711,295 +2025,385 @@
         <div class="category-section" id="uramaki">
             <h2 class="category-title">Uramaki (4 Pieces)</h2>
             <div class="items-grid single-column">
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/samurai.jpg" alt="Samurai" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/samurai.jpg" alt="Samurai"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Samurai</div>
                         <div class="item-description">Shrimp tempura, cucumber, tuna (Outside: Avocado,
                             teriyaki sauce)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/ebi-tempura.jpg" alt="Ebi Tempura" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/ebi-tempura.jpg" alt="Ebi Tempura"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Ebi Tempura</div>
                         <div class="item-description">Shrimp tempura, cucumber, avocado (Outside:
                             Tobiko, teriyaki sauce)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/miyagi.jpg" alt="Miyagi" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/miyagi.jpg" alt="Miyagi"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Miyagi</div>
                         <div class="item-description">Spicy kimchi salmon, avocado, oshinko (Outside:
                             Sweet chili shrimps)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/maiko.jpg" alt="Maiko" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/maiko.jpg" alt="Maiko"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Maiko</div>
                         <div class="item-description">Sweet chili salmon, avocado (Outside: Tobiko)
                         </div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/sapporo.jpg" alt="Sapporo" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/sapporo.jpg" alt="Sapporo"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Sapporo</div>
                         <div class="item-description">Shrimp tempura, avocado (Outside: Torched salmon,
                             teriyaki sauce)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/fushimi.jpg" alt="Fushimi" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/fushimi.jpg" alt="Fushimi"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Fushimi</div>
                         <div class="item-description">Spicy tuna (Outside: Salmon, tuna, avocado)</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/okinawa.jpg" alt="Okinawa" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/okinawa.jpg" alt="Okinawa"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Okinawa</div>
                         <div class="item-description">Crab, avocado, cucumber (Outside: Mango, black
                             sesame seeds)</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/nagoya.jpg" alt="Nagoya" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/nagoya.jpg" alt="Nagoya"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Nagoya</div>
                         <div class="item-description">Crab, salmon, avocado (Outside: Furikake, Japanese
                             mayo)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/kobe.jpg" alt="Kobe" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/kobe.jpg" alt="Kobe" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kobe</div>
                         <div class="item-description">Avocado, cucumber, crab (Outside: Beef, ginger
                             sauce, mushrooms, sesame seeds)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/robata.jpg" alt="Robata" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/robata.jpg" alt="Robata"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Robata</div>
                         <div class="item-description">Eel, cucumber (Outside: Avocado, salmon, teriyaki
                             sauce)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/fuji.jpg" alt="Fuji" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/fuji.jpg" alt="Fuji" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Fuji</div>
                         <div class="item-description">Salmon, avocado, tobiko (Outside: Salmon, Japanese
                             mayo, torched parmesan cheese)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/ebi-maki.jpg" alt="Ebi Maki" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/ebi-maki.jpg" alt="Ebi Maki"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Ebi Maki</div>
                         <div class="item-description">Shrimp tempura, avocado, cucumber (Outside:
                             Torched salmon, teriyaki sauce, sesame seeds)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/hiroshima.jpg" alt="Hiroshima" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/hiroshima.jpg" alt="Hiroshima"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Hiroshima</div>
                         <div class="item-description">Salmon, crab, cucumber (Outside: Tobiko)
                         </div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/nagasaki.jpg" alt="Nagasaki" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/nagasaki.jpg" alt="Nagasaki"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Nagasaki</div>
                         <div class="item-description">Crab, avocado, cucumber (Outside: Tobiko, salmon
                             with miso dressing)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/chiba.jpg" alt="Chiba" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/chiba.jpg" alt="Chiba"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Chiba</div>
                         <div class="item-description">Spicy crab (Outside: Panko, shichimi-togarashi)
                         </div>
                     </div>
                     <div class="item-price">5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/geisha.jpg" alt="Geisha" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/geisha.jpg" alt="Geisha"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Geisha</div>
                         <div class="item-description">Shrimp katsu, cucumber, avocado (Outside: Tuna)
                         </div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/kanazawa.jpg" alt="Kanazawa" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/kanazawa.jpg" alt="Kanazawa"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kanazawa</div>
                         <div class="item-description">Tempura salmon, cucumber (Outside: Torched salmon,
                             teriyaki sauce)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/masu.jpg" alt="Masu" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/masu.jpg" alt="Masu" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Masu</div>
                         <div class="item-description">Spicy kimchi salmon, cooked shrimp (Outside:
                             Avocado, sesame seeds)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/fukuoka.jpg" alt="Fukuoka" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/fukuoka.jpg" alt="Fukuoka"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Fukuoka</div>
-                        <div class="item-description">Smoked salmon, cream cheese, cucumber, sun dried tomatoes (Outside:
+                        <div class="item-description">Smoked salmon, cream cheese, cucumber, sun dried tomatoes
+                            (Outside:
                             Sesame)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/kyoto.jpg" alt="Kyoto" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/kyoto.jpg" alt="Kyoto"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kyoto</div>
-                        <div class="item-description">Cream cheese, sun dried tomatoes (Outside: Smoked salmon, black sesame
+                        <div class="item-description">Cream cheese, sun dried tomatoes (Outside: Smoked salmon, black
+                            sesame
                             seeds)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/kunsei-shake.jpg" alt="Kunsei Shake" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/kunsei-shake.jpg" alt="Kunsei Shake"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kunsei Shake</div>
-                        <div class="item-description">Cream cheese, cucumber, smoked salmon (Outside: Mixed sesame seeds)
+                        <div class="item-description">Cream cheese, cucumber, smoked salmon (Outside: Mixed sesame
+                            seeds)
                         </div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/katana.jpg" alt="Katana" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/katana.jpg" alt="Katana"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Katana</div>
-                        <div class="item-description">Shrimp tempura, cream cheese, cucumber (Outside: Sesame seeds)</div>
+                        <div class="item-description">Shrimp tempura, cream cheese, cucumber (Outside: Sesame seeds)
+                        </div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/kunsei-shake.jpg" alt="Menu item" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/kunsei-shake.jpg" alt="Menu item"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Okayama</div>
                         <div class="item-description">Cream cheese, salmon, cucumber (Outside: Mix sesame seeds)</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/shibuya.jpg" alt="Shibuya" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/shibuya.jpg" alt="Shibuya"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Shibuya</div>
-                        <div class="item-description">Spicy crab, cooked shrimp (Outside: Avocado, rock shrimp, sesame seeds)</div>
+                        <div class="item-description">Spicy crab, cooked shrimp (Outside: Avocado, rock shrimp, sesame
+                            seeds)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/hitachi.jpg" alt="Hitachi" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/hitachi.jpg" alt="Hitachi"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Hitachi</div>
                         <div class="item-description">Crab surimi, salmon, avocado (Outside: Tobiko)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/kagoshima.jpg" alt="Kagoshima" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/kagoshima.jpg" alt="Kagoshima"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kagoshima</div>
                         <div class="item-description">Tuna, gochujang, cooked shrimps, cucumber (Outside: Tuna)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/asano.jpg" alt="Asano" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/asano.jpg" alt="Asano"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Asano</div>
                         <div class="item-description">Tuna, salmon, avocado (Outside: Torched butterfish)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/smoked.jpg" alt="Smoked" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/smoked.jpg" alt="Smoked"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Smoked</div>
                         <div class="item-description">Salmon, avocado (Outside: Smoked salmon, black sesame seeds)</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/bonsai.jpg" alt="Bonsai" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/bonsai.jpg" alt="Bonsai"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Bonsai</div>
                         <div class="item-description">Salmon, lettuce (Outside: Spicy crab, tuna, tobiko)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/pontocho.jpg" alt="Pontocho" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/pontocho.jpg" alt="Pontocho"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Pontocho</div>
-                        <div class="item-description">Spicy tuna, tempura salmon (Outside: Eel, avocado, teriyaki sauce)</div>
+                        <div class="item-description">Spicy tuna, tempura salmon (Outside: Eel, avocado, teriyaki sauce)
+                        </div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/ginza.jpg" alt="Ginza" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/ginza.jpg" alt="Ginza"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Ginza</div>
                         <div class="item-description">Salmon, avocado (Outside: Mango)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/hakone.jpg" alt="Hakone" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/hakone.jpg" alt="Hakone"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Hakone</div>
                         <div class="item-description">Salmon shin, shrimp tempura, avocado (Outside:
                             Mango, teriyaki sauce)</div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/matsumoto.jpg" alt="Matsumoto" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/matsumoto.jpg" alt="Matsumoto"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Matsumoto</div>
                         <div class="item-description">Spicy salmon (Outside: Panko, shichimi-togarashi)
                         </div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/chiba-deluxe.jpg" alt="Chiba Deluxe" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/chiba-deluxe.jpg" alt="Chiba Deluxe"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Chiba Deluxe</div>
                         <div class="item-description">Spicy crab (Outside: Sweet chili, spicy salmon)
                         </div>
                     </div>
                     <div class="item-price">5.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/nagano.jpg" alt="Nagano" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/nagano.jpg" alt="Nagano"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Nagano</div>
                         <div class="item-description">Chicken katsu, cucumber (Outside: Avocado,
                             teriyaki sauce)</div>
                     </div>
                     <div class="item-price">5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/tsukiji.jpg" alt="Tsukiji" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/tsukiji.jpg" alt="Tsukiji"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Tsukiji</div>
                         <div class="item-description">Salmon, crab, cooked shrimps (Outside: Ginger
                             shrimp)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/taiko.jpg" alt="Taiko" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/taiko.jpg" alt="Taiko"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Taiko</div>
                         <div class="item-description">Salmon, tuna, cooked shrimp (Outside: Ginger
                             shrimp)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/yokohama.jpg" alt="Yokohama" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/yokohama.jpg" alt="Yokohama"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Yokohama</div>
                         <div class="item-description">Fresh crab, cucumber (Outside: Eel, teriyaki
                             sauce)</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/miyamoto.jpg" alt="Miyamoto" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/miyamoto.jpg" alt="Miyamoto"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Miyamoto</div>
                         <div class="item-description">Fresh crab, avocado (Outside: Scallops with
                             truffle oil)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/kani.jpg" alt="Kani" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/kani.jpg" alt="Kani" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kani</div>
                         <div class="item-description">Fresh crab, avocado (Outside: Tobiko)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/iwaki.jpg" alt="Iwaki" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/iwaki.jpg" alt="Iwaki"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Iwaki</div>
                         <div class="item-description">Fresh crab, avocado, cucumber (Outside: Tuna with
                             truffle mayo)</div>
                     </div>
                     <div class="item-price">6.5</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/wagyu.jpg" alt="Wagyu" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/wagyu.jpg" alt="Wagyu"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Wagyu</div>
                         <div class="item-description">Prime beef, asparagus (Outside: Seared wagyu beef,
                             yakiniku sauce)</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/kurume.jpg" alt="Kurume" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/kurume.jpg" alt="Kurume"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kurume</div>
                         <div class="item-description">Panko salmon (Outside: Avocado, curry mayo)</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/uramaki/tokyo.jpg" alt="Tokyo" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/uramaki/tokyo.jpg" alt="Tokyo"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Tokyo</div>
                         <div class="item-description">Shrimp katsu, mango (Outside: Tuna, sesame seeds,
                             teriyaki sauce)</div>
@@ -2013,37 +2417,49 @@
         <div class="category-section" id="fried-tempura">
             <h2 class="category-title">Fried Tempura (6 Pieces)</h2>
             <div class="items-grid single-column">
-                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/zazen.jpg" alt="Zazen" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/zazen.jpg" alt="Zazen"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Zazen</div>
                         <div class="item-description">Salmon, tuna coated, tobiko (No rice)</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/panko.jpg" alt="Panko" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/panko.jpg" alt="Panko"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Panko</div>
                         <div class="item-description">Salmon, crab, avocado</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/panko-deluxe.jpg" alt="Panko Deluxe" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/panko-deluxe.jpg"
+                        alt="Panko Deluxe" class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Panko Deluxe</div>
                         <div class="item-description">Salmon, crab, avocado, topped with crab</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/dragon-eye.jpg" alt="Dragon Eye" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/dragon-eye.jpg" alt="Dragon Eye"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Dragon Eye</div>
                         <div class="item-description">Salmon, tuna, white fish, green onions, teriyaki sauce</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/kawazaki.jpg" alt="Kawazaki" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/kawazaki.jpg" alt="Kawazaki"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kawazaki</div>
                         <div class="item-description">Spicy tuna, cucumber, cooked shrimps, crab, tobiko</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/kyushu.jpg" alt="Kyushu" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/fried-tempura/kyushu.jpg" alt="Kyushu"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Kyushu</div>
                         <div class="item-description">Spicy salmon, cream cheese, crab, avocado, tobiko</div>
                     </div>
@@ -2056,31 +2472,41 @@
         <div class="category-section" id="soya-paper">
             <h2 class="category-title">Soya Paper Rolls</h2>
             <div class="items-grid">
-                <div class="menu-item"><img loading="lazy" src="images/soya-paper-rolls/shirakawa.jpg" alt="Shirakawa" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/soya-paper-rolls/shirakawa.jpg" alt="Shirakawa"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Shirakawa</div>
                         <div class="item-description">Spicy tuna, panko, avocado, cooked shrimps</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/soya-paper-rolls/ibaraki.jpg" alt="Ibaraki" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/soya-paper-rolls/ibaraki.jpg" alt="Ibaraki"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Ibaraki</div>
                         <div class="item-description">Shrimp katsu, tobiko, raw scallops, mango</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/soya-paper-rolls/niigata.jpg" alt="Niigata" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/soya-paper-rolls/niigata.jpg" alt="Niigata"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Niigata</div>
                         <div class="item-description">Eel, shrimp tempura, cucumber, oshinko</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/soya-paper-rolls/nara.jpg" alt="Nara" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/soya-paper-rolls/nara.jpg" alt="Nara"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Nara</div>
                         <div class="item-description">Shrimp katsu, tuna, spicy crab, cucumber</div>
                     </div>
                     <div class="item-price">10</div>
                 </div>
-                <div class="menu-item"><img loading="lazy" src="images/soya-paper-rolls/akita.jpg" alt="Akita" class="item-image"><div class="item-info">
+                <div class="menu-item"><img loading="lazy" src="images/soya-paper-rolls/akita.jpg" alt="Akita"
+                        class="item-image">
+                    <div class="item-info">
                         <div class="item-name">Akita</div>
                         <div class="item-description">Spicy salmon, cream cheese, avocado, crab, cooked shrimps</div>
                     </div>
@@ -2091,29 +2517,35 @@
 
         <!-- TEMAKI -->
         <div class="category-section" id="temaki">
-            <h2 class="category-title"><img loading="lazy" src="images/misc/temaki.jpg" alt="Temaki" class="section-image-tall"> Temaki (Hand Roll)</h2>
+            <h2 class="category-title"><img loading="lazy" src="images/misc/temaki.jpg" alt="Temaki"
+                    class="section-image-tall"> Temaki (Hand Roll)</h2>
             <div class="items-grid">
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Salmon or Spicy Salmon</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Tuna or Spicy Tuna</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Shrimp Tempura</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Unagi - Eel</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Crab</div>
                     </div>
                     <div class="item-price">7</div>
@@ -2123,44 +2555,53 @@
 
         <!-- GUNKAN -->
         <div class="category-section" id="gunkan">
-            <h2 class="category-title"><img loading="lazy" src="images/misc/gunkan.jpg" alt="Gunkan" class="section-image"> Gunkan</h2>
+            <h2 class="category-title"><img loading="lazy" src="images/misc/gunkan.jpg" alt="Gunkan"
+                    class="section-image"> Gunkan</h2>
             <div class="items-grid">
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Salmon or Spicy Salmon</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Tuna or Spicy Tuna</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Spicy Scallops</div>
                     </div>
                     <div class="item-price">9</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Spicy Shrimps</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Tobiko</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Fresh Crab</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Ikura</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Uni</div>
                     </div>
                     <div class="item-price">8</div>
@@ -2170,39 +2611,47 @@
 
         <!-- HOSOMAKI -->
         <div class="category-section" id="hosomaki">
-            <h2 class="category-title"><img loading="lazy" src="images/misc/hosomaki.jpg" alt="Hosomaki" class="section-image"> Hosomaki (6 Pieces)</h2>
+            <h2 class="category-title"><img loading="lazy" src="images/misc/hosomaki.jpg" alt="Hosomaki"
+                    class="section-image"> Hosomaki (6 Pieces)</h2>
             <div class="items-grid">
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Cucumber</div>
                     </div>
                     <div class="item-price">5</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Avocado</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Crab</div>
                     </div>
                     <div class="item-price">6</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Salmon or Spicy Salmon</div>
                     </div>
                     <div class="item-price">7</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Tuna or Spicy Tuna</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Unagi - Eel</div>
                     </div>
                     <div class="item-price">8</div>
                 </div>
-                <div class="menu-item"><div class="item-info">
+                <div class="menu-item">
+                    <div class="item-info">
                         <div class="item-name">Hamachi or Spicy Hamachi</div>
                     </div>
                     <div class="item-price">9</div>
@@ -2214,27 +2663,85 @@
         <div class="category-section" id="desserts">
             <h2 class="category-title">Desserts</h2>
             <div class="dessert-item">
-                <div class="dessert-title"><img loading="lazy" src="images/misc/japanese-mochi.webp" alt="Japanese Mochi" class="section-image-wide"> <span>Japanese Mochi <span style="color: #c41e3a;">M/6 , L/7</span></span></div>
+                <div class="dessert-title"><img loading="lazy" src="images/misc/japanese-mochi.webp"
+                        alt="Japanese Mochi" class="section-image-wide"> <span>Japanese Mochi <span
+                            style="color: #c41e3a;">M/6 , L/7</span></span></div>
                 <div class="dessert-subtitle">Choose your flavor</div>
                 <div class="mochi-flavors">
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Tiramisu</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Tiramisu" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Tiramisu" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Yuzu</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Yuzu" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Yuzu" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Coconut</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Coconut" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Coconut" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Matcha</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Matcha" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Matcha" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Lotus</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Lotus" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Lotus" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Brownie</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Brownie" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Brownie" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Caramel</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Caramel" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Caramel" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Mango</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Mango" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Mango" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Strawberry</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Strawberry" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Strawberry" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Raspberry</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Raspberry" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Raspberry" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Cheese Cake</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Cheese Cake" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Cheese Cake" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Tropical</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Tropical" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Tropical" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Chocolate Strawberry</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Chocolate Strawberry" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Chocolate Strawberry" data-size="L" data-price="7">L</button></div></div>
-                    <div class="mochi-flavor"><span class="mochi-flavor-name">Chocolate Raspberry</span><div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Chocolate Raspberry" data-size="M" data-price="6">M</button><button class="mochi-size-btn" data-flavor="Chocolate Raspberry" data-size="L" data-price="7">L</button></div></div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Tiramisu</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Tiramisu" data-size="M"
+                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Tiramisu"
+                                data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Yuzu</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Yuzu" data-size="M"
+                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Yuzu" data-size="L"
+                                data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Coconut</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Coconut" data-size="M"
+                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Coconut"
+                                data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Matcha</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Matcha" data-size="M"
+                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Matcha"
+                                data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Lotus</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Lotus" data-size="M"
+                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Lotus"
+                                data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Brownie</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Brownie" data-size="M"
+                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Brownie"
+                                data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Caramel</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Caramel" data-size="M"
+                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Caramel"
+                                data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Mango</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Mango" data-size="M"
+                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Mango"
+                                data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Strawberry</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Strawberry"
+                                data-size="M" data-price="6">M</button><button class="mochi-size-btn"
+                                data-flavor="Strawberry" data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Raspberry</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Raspberry"
+                                data-size="M" data-price="6">M</button><button class="mochi-size-btn"
+                                data-flavor="Raspberry" data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Cheese Cake</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Cheese Cake"
+                                data-size="M" data-price="6">M</button><button class="mochi-size-btn"
+                                data-flavor="Cheese Cake" data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Tropical</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Tropical" data-size="M"
+                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Tropical"
+                                data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Chocolate Strawberry</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Chocolate Strawberry"
+                                data-size="M" data-price="6">M</button><button class="mochi-size-btn"
+                                data-flavor="Chocolate Strawberry" data-size="L" data-price="7">L</button></div>
+                    </div>
+                    <div class="mochi-flavor"><span class="mochi-flavor-name">Chocolate Raspberry</span>
+                        <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Chocolate Raspberry"
+                                data-size="M" data-price="6">M</button><button class="mochi-size-btn"
+                                data-flavor="Chocolate Raspberry" data-size="L" data-price="7">L</button></div>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
     <button class="go-to-top" id="goToTop" aria-label="Go to top">
         ↑
@@ -2253,7 +2760,9 @@
 
             <!-- Maps Widget -->
             <div class="maps-widget">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.941083312728!2d35.9142025!3d33.83963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f353f8bda5c9f%3A0xdf7b89f2a694832f!2sUsuba%20sushibar%20%26%20Izakaya!5e0!3m2!1sen!2slb!4v1769838949476!5m2!1sen!2slb" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.941083312728!2d35.9142025!3d33.83963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f353f8bda5c9f%3A0xdf7b89f2a694832f!2sUsuba%20sushibar%20%26%20Izakaya!5e0!3m2!1sen!2slb!4v1769838949476!5m2!1sen!2slb"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <!-- Contact Information -->
@@ -2263,7 +2772,8 @@
                     <a href="tel:+96181109098" class="contact-link">📞 +961 81 109 098</a>
                     <a href="https://wa.me/96181109098" class="whatsapp-icon" target="_blank" title="Chat on WhatsApp">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                         </svg>
                     </a>
                 </div>
@@ -2271,9 +2781,11 @@
 
             <!-- Social Links -->
             <div class="social-links">
-                <a href="https://www.instagram.com/usubasushibar?igsh=MXU0anVhdnQ4ajlzbw==" class="social-link" target="_blank">
+                <a href="https://www.instagram.com/usubasushibar?igsh=MXU0anVhdnQ4ajlzbw==" class="social-link"
+                    target="_blank">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
                     @usubasushibar
                 </a>
@@ -2285,7 +2797,8 @@
                 <a href="tel:+96170865988">📞 +961 70865988</a>
                 <a href="https://wa.me/96170865988" class="whatsapp-icon" target="_blank" title="Chat on WhatsApp">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg>
                 </a>
                 | <a href="mailto:yousef.r.younis@gmail.com">📧 yousef.r.younis@gmail.com</a>
@@ -2325,12 +2838,12 @@
 
         // Go to Top Button
         const goToTopBtn = document.getElementById('goToTop');
-        
+
         goToTopBtn.addEventListener('click', () => {
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             history.pushState('', document.title, window.location.pathname);
         });
-        
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 goToTopBtn.classList.add('visible');
@@ -2338,7 +2851,57 @@
                 goToTopBtn.classList.remove('visible');
             }
         });
+
+        // Search bar logic
+        const menuSearch = document.getElementById('menuSearch');
+        const menuSearchClear = document.getElementById('menuSearchClear');
+        const menuSections = document.querySelectorAll('.category-section');
+
+        // No-results element injected into the container
+        const menuNoResults = document.createElement('p');
+        menuNoResults.className = 'search-no-results';
+        menuNoResults.textContent = 'No results found';
+        document.querySelector('.container').prepend(menuNoResults);
+
+        function resetMenuSearch() {
+            menuSections.forEach(section => {
+                section.style.display = '';
+                section.querySelectorAll('.menu-item').forEach(item => {
+                    item.classList.remove('search-highlight', 'search-dimmed');
+                });
+            });
+            menuNoResults.style.display = 'none';
+        }
+
+        menuSearch.addEventListener('input', () => {
+            const q = menuSearch.value.trim().toLowerCase();
+            menuSearchClear.style.display = q ? 'block' : 'none';
+            if (!q) { resetMenuSearch(); return; }
+
+            let totalVisible = 0;
+            menuSections.forEach(section => {
+                const items = section.querySelectorAll('.menu-item');
+                let sectionMatches = 0;
+                items.forEach(item => {
+                    const matches = item.textContent.toLowerCase().includes(q);
+                    item.classList.toggle('search-highlight', matches);
+                    item.classList.toggle('search-dimmed', !matches);
+                    if (matches) sectionMatches++;
+                });
+                section.style.display = sectionMatches > 0 ? '' : 'none';
+                if (sectionMatches > 0) totalVisible++;
+            });
+            menuNoResults.style.display = totalVisible === 0 ? 'block' : 'none';
+        });
+
+        menuSearchClear.addEventListener('click', () => {
+            menuSearch.value = '';
+            menuSearchClear.style.display = 'none';
+            resetMenuSearch();
+            menuSearch.focus();
+        });
     </script>
     <script src="cart.js"></script>
 </body>
+
 </html>

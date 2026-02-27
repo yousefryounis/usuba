@@ -8,6 +8,11 @@
     <link rel="icon" type="image/jpeg" href="images/logo2.jpg">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -358,13 +363,120 @@
             font-size: 0.75em;
             color: #666;
             line-height: 1.4;
-            font-style: italic;
         }
 
         .drink-details {
             font-size: 0.7em;
             color: #888;
             margin-top: 2px;
+        }
+
+        /* Header fade transition */
+        .header-fade {
+            height: 50px;
+            background: linear-gradient(to bottom, #111312 0%, transparent 100%);
+            pointer-events: none;
+            margin-top: -50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Search bar */
+        .search-wrapper {
+            max-width: 520px;
+            margin: 0 auto 10px;
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .search-inner {
+            display: flex;
+            align-items: center;
+            background: #1c1e1d;
+            border: 1px solid rgba(196, 30, 58, 0.35);
+            border-radius: 30px;
+            padding: 10px 18px;
+            gap: 10px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-inner:focus-within {
+            border-color: #c41e3a;
+            box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.12);
+        }
+
+        .search-icon {
+            color: #f0f0f0;
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            transition: color 0.3s ease;
+        }
+
+        .search-inner:focus-within .search-icon {
+            color: #c41e3a;
+        }
+
+        .search-input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            color: #f0f0f0;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        /* Hide native WebKit search cross */
+        .search-input::-webkit-search-decoration,
+        .search-input::-webkit-search-cancel-button,
+        .search-input::-webkit-search-results-button,
+        .search-input::-webkit-search-results-decoration {
+            -webkit-appearance: none;
+        }
+
+        .search-clear {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 1em;
+            padding: 0;
+            line-height: 1;
+            display: none;
+            transition: color 0.2s ease;
+        }
+
+        .search-clear:hover {
+            color: #c41e3a;
+        }
+
+        .search-no-results {
+            text-align: center;
+            color: #666;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            padding: 30px 0 10px;
+            display: none;
+        }
+
+        .search-highlight {
+            background: rgba(196, 30, 58, 0.06) !important;
+            border-left: 2px solid #c41e3a !important;
+            border-radius: 4px;
+            padding-left: 8px !important;
+            transition: background 0.2s ease, opacity 0.2s ease;
+        }
+
+        .search-dimmed {
+            opacity: 0.18;
+            transition: opacity 0.2s ease;
         }
 
         /* Go to Top Button */
@@ -375,7 +487,7 @@
             width: 50px;
             height: 50px;
             background: linear-gradient(135deg, #c41e3a 0%, #a01830 100%);
-            color: #000;
+            color: #fff;
             border: none;
             border-radius: 50%;
             cursor: pointer;
@@ -722,11 +834,29 @@
         </nav>
     </div>
 
+    <!-- Header to content gradient fade -->
+    <div class="header-fade"></div>
+
+    <!-- Search bar -->
+    <div class="search-wrapper">
+        <div class="search-inner">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" class="search-input" id="drinkSearch" placeholder="Search drinks, spirits, wines…"
+                autocomplete="off" spellcheck="false">
+            <button class="search-clear" id="drinkSearchClear" aria-label="Clear search">✕</button>
+        </div>
+    </div>
+
     <div class="container">
 
         <!-- SAKE MENU -->
         <div class="category-section" id="sake-menu">
-            <h2 class="category-title"><img loading="lazy" src="webp-images/drinks/sake2.webp" alt="Sake" class="section-image-1-1"> Sake Menu</h2>
+            <h2 class="category-title"><img loading="lazy" src="webp-images/drinks/sake2.webp" alt="Sake"
+                    class="section-image-1-1"> Sake Menu</h2>
             <div class="section-images">
             </div>
 
@@ -918,7 +1048,8 @@
                         <span class="drink-name">Hakkaisan Daiginjo</span>
                         <span class="drink-price">21 / 42</span>
                     </div>
-                    <div class="drink-description">Blend of 2 famous sake rice, pure exotic taste with a nice creamy finishing</div>
+                    <div class="drink-description">Blend of 2 famous sake rice, pure exotic taste with a nice creamy
+                        finishing</div>
                     <div class="drink-details">300 ML / 720 ML, Alc 15.5%, Polish 45%</div>
                 </div>
                 <div class="drink-item">
@@ -1038,10 +1169,14 @@
         <div class="category-section" id="japanese-whiskey">
             <h2 class="category-title">Japanese Whiskey</h2>
             <div class="section-images no-wrap">
-                <img loading="lazy" src="webp-images/drinks/whiskey1.webp" alt="Japanese Whiskey" class="section-image-1-1">
-                <img loading="lazy" src="webp-images/drinks/whiskey2.webp" alt="Japanese Whiskey" class="section-image-1-1">
-                <img loading="lazy" src="webp-images/drinks/whiskey3.webp" alt="Japanese Whiskey" class="section-image-1-1">
-                <img loading="lazy" src="webp-images/drinks/whiskey4.webp" alt="Japanese Whiskey" class="section-image-1-1">
+                <img loading="lazy" src="webp-images/drinks/whiskey1.webp" alt="Japanese Whiskey"
+                    class="section-image-1-1">
+                <img loading="lazy" src="webp-images/drinks/whiskey2.webp" alt="Japanese Whiskey"
+                    class="section-image-1-1">
+                <img loading="lazy" src="webp-images/drinks/whiskey3.webp" alt="Japanese Whiskey"
+                    class="section-image-1-1">
+                <img loading="lazy" src="webp-images/drinks/whiskey4.webp" alt="Japanese Whiskey"
+                    class="section-image-1-1">
             </div>
 
             <div class="subcategory">Blended Whiskey</div>
@@ -1091,7 +1226,8 @@
                         <span class="drink-name">Iwai</span>
                         <span class="drink-price">9</span>
                     </div>
-                    <div class="drink-description">Apple and pears note, hint of vanilla, toasted oak and floral notes</div>
+                    <div class="drink-description">Apple and pears note, hint of vanilla, toasted oak and floral notes
+                    </div>
                     <div class="drink-details">Alcohol 40%</div>
                 </div>
                 <div class="drink-item">
@@ -1199,7 +1335,8 @@
                         <span class="drink-name">Yamazaki</span>
                         <span class="drink-price">25</span>
                     </div>
-                    <div class="drink-description">Sweet and fruity aroma with a hint of white oak and a deep flavor</div>
+                    <div class="drink-description">Sweet and fruity aroma with a hint of white oak and a deep flavor
+                    </div>
                     <div class="drink-details">Alcohol 43%</div>
                 </div>
                 <div class="drink-item">
@@ -1219,7 +1356,8 @@
                         <span class="drink-name">Nikka Blended</span>
                         <span class="drink-price">9 / 90</span>
                     </div>
-                    <div class="drink-description">Winter spice, toffee and a touch of caramel and vanilla and a warm finishing</div>
+                    <div class="drink-description">Winter spice, toffee and a touch of caramel and vanilla and a warm
+                        finishing</div>
                     <div class="drink-details">Alcohol 51.4%</div>
                 </div>
                 <div class="drink-item">
@@ -1325,7 +1463,8 @@
                         <span class="drink-name">Den-En Gold</span>
                         <span class="drink-price">7</span>
                     </div>
-                    <div class="drink-description">Wheat shochu with toasty nutty flavor and a smooth crispy finish</div>
+                    <div class="drink-description">Wheat shochu with toasty nutty flavor and a smooth crispy finish
+                    </div>
                 </div>
             </div>
         </div>
@@ -1485,28 +1624,32 @@
                         <span class="drink-name">Haku-Hi</span>
                         <span class="drink-price">13</span>
                     </div>
-                    <div class="drink-description">Mix of the Premium Japanese Vodka, soda water and hints of lemon</div>
+                    <div class="drink-description">Mix of the Premium Japanese Vodka, soda water and hints of lemon
+                    </div>
                 </div>
                 <div class="drink-item">
                     <div class="drink-header">
                         <span class="drink-name">Ginlet</span>
                         <span class="drink-price">13</span>
                     </div>
-                    <div class="drink-description">Elegant Gin meets freshly squeezed lime and a touch of simple syrup for a perfectly balanced, refreshing cocktail</div>
+                    <div class="drink-description">Elegant Gin meets freshly squeezed lime and a touch of simple syrup
+                        for a perfectly balanced, refreshing cocktail</div>
                 </div>
                 <div class="drink-item">
                     <div class="drink-header">
                         <span class="drink-name">Gin Tonic</span>
                         <span class="drink-price">13</span>
                     </div>
-                    <div class="drink-description">The aroma of Gin balances with the bitterness of Tonic water. Served with ice and a crisp lime accent</div>
+                    <div class="drink-description">The aroma of Gin balances with the bitterness of Tonic water. Served
+                        with ice and a crisp lime accent</div>
                 </div>
                 <div class="drink-item">
                     <div class="drink-header">
                         <span class="drink-name">High Ball</span>
                         <span class="drink-price">13</span>
                     </div>
-                    <div class="drink-description">Whisky meets sparkling soda in a bright, refreshing blend. Smooth and crisp</div>
+                    <div class="drink-description">Whisky meets sparkling soda in a bright, refreshing blend. Smooth and
+                        crisp</div>
                 </div>
             </div>
         </div>
@@ -1520,21 +1663,24 @@
                         <span class="drink-name">Saketini</span>
                         <span class="drink-price">13</span>
                     </div>
-                    <div class="drink-description">A clean, elegant twist on the Martini, where smooth Sake meets crisp Gin</div>
+                    <div class="drink-description">A clean, elegant twist on the Martini, where smooth Sake meets crisp
+                        Gin</div>
                 </div>
                 <div class="drink-item">
                     <div class="drink-header">
                         <span class="drink-name">Sake Mojito</span>
                         <span class="drink-price">13</span>
                     </div>
-                    <div class="drink-description">A bright mix of Sake, fresh mint, and lime. Cool, crisp, and quietly refreshing</div>
+                    <div class="drink-description">A bright mix of Sake, fresh mint, and lime. Cool, crisp, and quietly
+                        refreshing</div>
                 </div>
                 <div class="drink-item">
                     <div class="drink-header">
                         <span class="drink-name">Sake Bomb</span>
                         <span class="drink-price">13</span>
                     </div>
-                    <div class="drink-description">A lively mix of chilled Sake and crisp beer, dropped together for a fun and energetic toast</div>
+                    <div class="drink-description">A lively mix of chilled Sake and crisp beer, dropped together for a
+                        fun and energetic toast</div>
                 </div>
                 <div class="drink-item">
                     <div class="drink-header">
@@ -1548,7 +1694,8 @@
                         <span class="drink-name">Sake Lychee Martini</span>
                         <span class="drink-price">15</span>
                     </div>
-                    <div class="drink-description">The sweetness of Lychee gently blends with Sake. Enjoyable like a dessert</div>
+                    <div class="drink-description">The sweetness of Lychee gently blends with Sake. Enjoyable like a
+                        dessert</div>
                 </div>
             </div>
         </div>
@@ -1572,7 +1719,9 @@
 
             <!-- Maps Widget -->
             <div class="maps-widget">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.941083312728!2d35.9142025!3d33.83963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f353f8bda5c9f%3A0xdf7b89f2a694832f!2sUsuba%20sushibar%20%26%20Izakaya!5e0!3m2!1sen!2slb!4v1769838949476!5m2!1sen!2slb" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.941083312728!2d35.9142025!3d33.83963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f353f8bda5c9f%3A0xdf7b89f2a694832f!2sUsuba%20sushibar%20%26%20Izakaya!5e0!3m2!1sen!2slb!4v1769838949476!5m2!1sen!2slb"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <!-- Contact Information -->
@@ -1582,7 +1731,8 @@
                     <a href="tel:+96181109098" class="contact-link">📞 +961 81 109 098</a>
                     <a href="https://wa.me/96181109098" class="whatsapp-icon" target="_blank" title="Chat on WhatsApp">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                         </svg>
                     </a>
                 </div>
@@ -1590,9 +1740,11 @@
 
             <!-- Social Links -->
             <div class="social-links">
-                <a href="https://www.instagram.com/usubasushibar?igsh=MXU0anVhdnQ4ajlzbw==" class="social-link" target="_blank">
+                <a href="https://www.instagram.com/usubasushibar?igsh=MXU0anVhdnQ4ajlzbw==" class="social-link"
+                    target="_blank">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
                     @usubasushibar
                 </a>
@@ -1604,7 +1756,8 @@
                 <a href="tel:+96170865988">📞 +961 70865988</a>
                 <a href="https://wa.me/96170865988" class="whatsapp-icon" target="_blank" title="Chat on WhatsApp">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg>
                 </a>
                 | <a href="mailto:yousef.r.younis@gmail.com">📧 yousef.r.younis@gmail.com</a>
@@ -1656,6 +1809,55 @@
             } else {
                 goToTopBtn.classList.remove('visible');
             }
+        });
+
+        // Search bar logic
+        const drinkSearch = document.getElementById('drinkSearch');
+        const drinkSearchClear = document.getElementById('drinkSearchClear');
+        const categorySections = document.querySelectorAll('.category-section');
+
+        // No-results element injected into the container
+        const noResults = document.createElement('p');
+        noResults.className = 'search-no-results';
+        noResults.textContent = 'No results found';
+        document.querySelector('.container').prepend(noResults);
+
+        function resetDrinkSearch() {
+            categorySections.forEach(section => {
+                section.style.display = '';
+                section.querySelectorAll('.drink-item').forEach(item => {
+                    item.classList.remove('search-highlight', 'search-dimmed');
+                });
+            });
+            noResults.style.display = 'none';
+        }
+
+        drinkSearch.addEventListener('input', () => {
+            const q = drinkSearch.value.trim().toLowerCase();
+            drinkSearchClear.style.display = q ? 'block' : 'none';
+            if (!q) { resetDrinkSearch(); return; }
+
+            let totalVisible = 0;
+            categorySections.forEach(section => {
+                const items = section.querySelectorAll('.drink-item');
+                let sectionMatches = 0;
+                items.forEach(item => {
+                    const matches = item.textContent.toLowerCase().includes(q);
+                    item.classList.toggle('search-highlight', matches);
+                    item.classList.toggle('search-dimmed', !matches);
+                    if (matches) sectionMatches++;
+                });
+                section.style.display = sectionMatches > 0 ? '' : 'none';
+                if (sectionMatches > 0) totalVisible++;
+            });
+            noResults.style.display = totalVisible === 0 ? 'block' : 'none';
+        });
+
+        drinkSearchClear.addEventListener('click', () => {
+            drinkSearch.value = '';
+            drinkSearchClear.style.display = 'none';
+            resetDrinkSearch();
+            drinkSearch.focus();
         });
     </script>
     <script src="cart.js"></script>
