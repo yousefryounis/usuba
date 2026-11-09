@@ -700,8 +700,8 @@
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start;
             gap: 6px;
             min-width: 0;
         }
@@ -724,13 +724,12 @@
         }
 
         .mochi-size-btn {
-            width: 28px;
             height: 28px;
             min-width: 28px;
             background: #c41e3a;
             color: #fff;
             border: none;
-            border-radius: 50%;
+            border-radius: 14px;
             font-size: 12px;
             font-weight: 600;
             cursor: pointer;
@@ -738,7 +737,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.25s ease;
-            padding: 0;
+            padding: 0 10px;
         }
 
         .mochi-size-btn:hover {
@@ -2770,88 +2769,88 @@
                 <div class="mochi-flavors">
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Tiramisu</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Tiramisu" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Tiramisu"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Tiramisu"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Yuzu</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Yuzu" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Yuzu" data-size="L"
-                                data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Yuzu" data-size="L"
+                                data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Coconut</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Coconut" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Coconut"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Coconut"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Matcha</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Matcha" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Matcha"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Matcha"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Lotus</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Lotus" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Lotus"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Lotus"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Brownie</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Brownie" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Brownie"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Brownie"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Caramel</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Caramel" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Caramel"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Caramel"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Mango</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Mango" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Mango"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Mango"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Strawberry</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Strawberry"
-                                data-size="M" data-price="6">M</button><button class="mochi-size-btn"
-                                data-flavor="Strawberry" data-size="L" data-price="7">L</button></div>
+                                data-size="M" data-price="6">M · 6</button><button class="mochi-size-btn"
+                                data-flavor="Strawberry" data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Raspberry</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Raspberry"
-                                data-size="M" data-price="6">M</button><button class="mochi-size-btn"
-                                data-flavor="Raspberry" data-size="L" data-price="7">L</button></div>
+                                data-size="M" data-price="6">M · 6</button><button class="mochi-size-btn"
+                                data-flavor="Raspberry" data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Cheese Cake</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Cheese Cake"
-                                data-size="M" data-price="6">M</button><button class="mochi-size-btn"
-                                data-flavor="Cheese Cake" data-size="L" data-price="7">L</button></div>
+                                data-size="M" data-price="6">M · 6</button><button class="mochi-size-btn"
+                                data-flavor="Cheese Cake" data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Tropical</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Tropical" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Tropical"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Tropical"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Chocolate Strawberry</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Chocolate Strawberry"
-                                data-size="M" data-price="6">M</button><button class="mochi-size-btn"
-                                data-flavor="Chocolate Strawberry" data-size="L" data-price="7">L</button></div>
+                                data-size="M" data-price="6">M · 6</button><button class="mochi-size-btn"
+                                data-flavor="Chocolate Strawberry" data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Chocolate Raspberry</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Chocolate Raspberry"
-                                data-size="M" data-price="6">M</button><button class="mochi-size-btn"
-                                data-flavor="Chocolate Raspberry" data-size="L" data-price="7">L</button></div>
+                                data-size="M" data-price="6">M · 6</button><button class="mochi-size-btn"
+                                data-flavor="Chocolate Raspberry" data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Sesame</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Sesame" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Sesame"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Sesame"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Watermelon</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Watermelon" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Watermelon"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Watermelon"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                     <div class="mochi-flavor"><span class="mochi-flavor-name">Chestnut</span>
                         <div class="mochi-size-btns"><button class="mochi-size-btn" data-flavor="Chestnut" data-size="M"
-                                data-price="6">M</button><button class="mochi-size-btn" data-flavor="Chestnut"
-                                data-size="L" data-price="7">L</button></div>
+                                data-price="6">M · 6</button><button class="mochi-size-btn" data-flavor="Chestnut"
+                                data-size="L" data-price="7">L · 7</button></div>
                     </div>
                 </div>
             </div>
